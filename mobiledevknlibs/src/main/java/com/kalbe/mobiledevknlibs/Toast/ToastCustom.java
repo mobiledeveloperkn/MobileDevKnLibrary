@@ -1,6 +1,5 @@
 package com.kalbe.mobiledevknlibs.Toast;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -20,7 +19,7 @@ import es.dmoral.toasty.Toasty;
  * Created by aan.junianto on 28/12/2017.
  */
 
-public class ToastCustom extends Activity{
+public class ToastCustom{
     public static void showToastDefault(Context ctx, String str) {
         Toast toast = Toast.makeText(ctx, str, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP, 25, 400);
