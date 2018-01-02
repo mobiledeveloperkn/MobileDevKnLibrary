@@ -21,7 +21,7 @@ import java.util.List;
 
 public class SpinnerCustom extends Activity {
 
-    public static void selectedItemByText(Context context, Spinner spinner, String str, List<String> listData) {
+    public static void selectedItemByText(Context context, Spinner spinner, List<String> listData, String str) {
         int position = new MySpinnerAdapter((context), R.layout.custom_spinner, listData).getPosition(str);
         spinner.setSelection(position);
     }
