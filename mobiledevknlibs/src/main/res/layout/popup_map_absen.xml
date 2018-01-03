@@ -11,9 +11,9 @@
     android:paddingTop="5dp"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    tools:context="Maps.PopUpMaps" >
+    tools:context=".Maps.PopUpMaps" >
 
-    <Maps.maps.MyMapFragmentContainer
+    <com.kalbe.mobiledevknlibs.Maps.maps.MyMapFragmentContainer
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="250dp">
@@ -60,5 +60,5 @@
             </LinearLayout>
 
         </RelativeLayout>
-    </Maps.maps.MyMapFragmentContainer>
+    </com.kalbe.mobiledevknlibs.Maps.maps.MyMapFragmentContainer>
 </RelativeLayout>

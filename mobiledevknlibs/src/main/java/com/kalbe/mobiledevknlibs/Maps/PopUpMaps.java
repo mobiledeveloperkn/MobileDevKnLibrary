@@ -1,4 +1,4 @@
-package Maps;
+package com.kalbe.mobiledevknlibs.Maps;
 
 import android.Manifest;
 import android.app.Activity;

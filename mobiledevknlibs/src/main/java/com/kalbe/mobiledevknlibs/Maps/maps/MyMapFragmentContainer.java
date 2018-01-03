@@ -1,4 +1,4 @@
-package Maps.maps;
+package com.kalbe.mobiledevknlibs.Maps.maps;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
