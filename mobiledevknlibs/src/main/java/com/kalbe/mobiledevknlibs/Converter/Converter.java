@@ -5,9 +5,9 @@ package com.kalbe.mobiledevknlibs.Converter;
  */
 
 public class Converter {
-    public static double StringToGeotagging(String txtGeo){
-        if (txtGeo != null && !txtGeo.equals("")){
-            return Double.parseDouble(txtGeo);
+    public static double StringToDouble(String txtNumber){
+        if (txtNumber != null && !txtNumber.equals("")){
+            return Double.parseDouble(txtNumber);
         }else{
             return 0;
         }
