@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Dewi Oktaviani on 1/2/2018.
  */
 
-public class SpinnerCustom extends Activity {
+public class SpinnerCustom {
 
     public static void selectedItemByText(Context context, Spinner spinner, List<String> listData, String str) {
         int position = new MySpinnerAdapter((context), R.layout.custom_spinner, listData).getPosition(str);
