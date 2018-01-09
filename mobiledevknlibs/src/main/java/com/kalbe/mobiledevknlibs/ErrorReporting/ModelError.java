@@ -22,7 +22,6 @@ public class ModelError {
     public void set_txtDeviceId(String _txtDeviceId) {
         this._txtDeviceId = _txtDeviceId;
     }
-    
     public String get_txtFileName(){
         return _txtFileName;
     }
