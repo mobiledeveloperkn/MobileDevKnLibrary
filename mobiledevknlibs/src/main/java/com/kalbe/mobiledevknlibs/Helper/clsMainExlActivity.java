@@ -28,12 +28,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kalbe.mobiledevknlibs.Helper.AppAdapter;
-import com.kalbe.mobiledevknlibs.Helper.AppAdapterNotif;
-import com.kalbe.mobiledevknlibs.Helper.clsRowItem;
-import com.kalbe.mobiledevknlibs.Helper.clsSwipeList;
 import com.kalbe.mobiledevknlibs.Helper.zoomview.CustomZoomView;
 import com.kalbe.mobiledevknlibs.R;
+import com.kalbe.mobiledevknlibs.library.PullToRefreshSwipeMenuListView;
+import com.kalbe.mobiledevknlibs.library.swipemenu.bean.SwipeMenu;
+import com.kalbe.mobiledevknlibs.library.swipemenu.bean.SwipeMenuItem;
+import com.kalbe.mobiledevknlibs.library.swipemenu.interfaces.OnMenuItemClickListener;
+import com.kalbe.mobiledevknlibs.library.swipemenu.interfaces.OnSwipeListener;
+import com.kalbe.mobiledevknlibs.library.swipemenu.interfaces.SwipeMenuCreator;
 
 import java.io.File;
 import java.net.InetAddress;
@@ -53,11 +55,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-import edu.swu.pulltorefreshswipemenulistview.library.PullToRefreshSwipeMenuListView;
-import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.bean.SwipeMenu;
-import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.bean.SwipeMenuItem;
-import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnSwipeListener;
-import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.SwipeMenuCreator;
+//import edu.swu.pulltorefreshswipemenulistview.library.PullToRefreshSwipeMenuListView;
+//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.bean.SwipeMenu;
+//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.bean.SwipeMenuItem;
+//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnSwipeListener;
+//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.SwipeMenuCreator;
 
 /**
  * Created by Dewi Oktaviani on 1/8/2018.
@@ -618,8 +620,8 @@ public class clsMainExlActivity {
         return listener;
     }
 
-    public static edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnMenuItemClickListener menuSwipeListener(final Context _ctx, final String action, final Map<String, HashMap> mapMenu, final List<clsSwipeList> swipeList) {
-        edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnMenuItemClickListener listener = new edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnMenuItemClickListener() {
+    public static OnMenuItemClickListener menuSwipeListener(final Context _ctx, final String action, final Map<String, HashMap> mapMenu, final List<clsSwipeList> swipeList) {
+        OnMenuItemClickListener listener = new OnMenuItemClickListener() {
 
             @SuppressWarnings("unchecked")
             @Override

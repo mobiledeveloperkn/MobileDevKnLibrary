@@ -12,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kalbe.mobiledevknlibs.R;
+import com.kalbe.mobiledevknlibs.library.toasty.Toasty;
 
-import es.dmoral.toasty.Toasty;
 
 /**
  * Created by aan.junianto on 28/12/2017.

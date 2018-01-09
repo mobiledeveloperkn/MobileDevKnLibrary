@@ -10,9 +10,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.kalbe.mobiledevknlibs.R;
+
 import java.util.List;
 
-import edu.swu.pulltorefreshswipemenulistview.library.R;
+//import edu.swu.pulltorefreshswipemenulistview.library.R;
 
 public class AppAdapterNotif extends BaseAdapter {
 
