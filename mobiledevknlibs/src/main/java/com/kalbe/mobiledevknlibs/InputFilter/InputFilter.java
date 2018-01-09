@@ -8,7 +8,7 @@ import android.widget.EditText;
  */
 
 public class InputFilter {
-    public static void filterCapsAll(EditText editText){
+    public static void filterCapsAll(EditText editText, int length){
         android.text.InputFilter[] fArray = new android.text.InputFilter[3];
 
         android.text.InputFilter filter = new android.text.InputFilter() {
@@ -22,7 +22,7 @@ public class InputFilter {
                 return null;
             }
         };
-        fArray[0] = new android.text.InputFilter.LengthFilter(8);
+        fArray[0] = new android.text.InputFilter.LengthFilter(length);
         fArray[1] = new android.text.InputFilter.AllCaps();
         fArray[2] = filter;
         editText.setFilters(fArray);

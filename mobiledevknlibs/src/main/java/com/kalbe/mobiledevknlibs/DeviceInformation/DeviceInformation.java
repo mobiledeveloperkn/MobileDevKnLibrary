@@ -11,10 +11,10 @@ import java.util.List;
  * Created by Robert on 04/01/2018.
  */
 
-public class DeviceInformation extends Activity {
+public class DeviceInformation {
     SensorManager smm;
     List<Sensor> sensors;
-    public ModelDevice getDeviceInformation(){
+    public static ModelDevice getDeviceInformation(){
         ModelDevice deviceInfo = new ModelDevice();
         if (android.os.Build.DEVICE != null){
             deviceInfo.setDevice(android.os.Build.DEVICE);
@@ -33,8 +33,8 @@ public class DeviceInformation extends Activity {
         }
         return deviceInfo;
     }
-    public List<Sensor> getSensorInformation(){
-        smm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+    public List<Sensor> getSensorInformation(Context context){
+        smm = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         sensors = smm.getSensorList(Sensor.TYPE_ALL);
         return sensors;
     }
