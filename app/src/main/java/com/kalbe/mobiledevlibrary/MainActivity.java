@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         final EditText date = (EditText) findViewById(R.id.txtDate);
+        
 //        clsDatePicker.showDatePicker(MainActivity.this, date);
 
 //        CustomDatePicker.showHint(date, clsEnumDatePicker.standard2);
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                CustomDatePicker.showDatePicker(MainActivity.this, date, "Set Date", 0);
                 clsDatePicker.showDatePicker(MainActivity.this, date, clsEnumDatePicker.standard0);
-            } 
+            }
         });
 
         btn.setOnClickListener(new View.OnClickListener() {
