@@ -41,7 +41,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
     GoogleMap mMap;
     boolean mockStatus = false;
 
-    public void popUpMaps(final Context context) {
+    public void popUpMaps(final Context context, int resViewLayout) {
         Boolean valid = true;
         getLocation(context);
         double latitude = 0;
@@ -84,8 +84,8 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
 //                    if (f != null) {
 //                        (getActivity()).getFragmentManager().beginTransaction().remove(f).commit();
 //                    }
-//            LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-            View promptView = layoutInflater.inflate(R.layout.popup_map_absen, null);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+            View promptView = inflater.inflate(resViewLayout, null);
 
             final Activity activity = (Activity) context;
 
@@ -127,7 +127,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
                 }
             });
 
-            android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(activity.getApplicationContext());
+            android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(context);
             alertDialogBuilder.setView(promptView);
             alertDialogBuilder
                     .setCancelable(false)
