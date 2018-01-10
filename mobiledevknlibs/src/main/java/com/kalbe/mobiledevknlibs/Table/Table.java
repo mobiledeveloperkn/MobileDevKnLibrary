@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 
 public class Table {
-    private void setTableLayout(Context context, TableLayout tableLayout, String[] colTextHeader, ArrayList<String[]> colData) {
+    public static void setTableLayout(Context context, TableLayout tableLayout, String[] colTextHeader, ArrayList<String[]> colData) {
 //        LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 //        final View promptView = inflater.inflate(R.layout.popup_table, null);
 //        TableLayout tlb = (TableLayout) promptView.findViewById(R.id.tlProductQty);
@@ -61,14 +61,14 @@ public class Table {
 
             tr.setLayoutParams(tableRowParams);
             for (int i=0; i < data.length; i++){
-                TextView product = new TextView(context);
-                product.setTextSize(12);
-                product.setWidth(400);
-                product.setPadding(10, 10, 10, 10);
-                product.setBackgroundColor(Color.parseColor("#f0f0f0"));
-                product.setTextColor(Color.BLACK);
-                product.setText(i);
-                tr.addView(product,params);
+                TextView tv = new TextView(context);
+                tv.setTextSize(12);
+                tv.setWidth(400);
+                tv.setPadding(10, 10, 10, 10);
+                tv.setBackgroundColor(Color.parseColor("#f0f0f0"));
+                tv.setTextColor(Color.BLACK);
+                tv.setText(i);
+                tr.addView(tv,params);
             }
             tl.addView(tr, tableRowParams);
         }
