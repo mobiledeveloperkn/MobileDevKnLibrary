@@ -1,1 +1,1 @@
-include ':app', ':mobiledevknlibs', ':library_PullToRefreshSwipeMenuListView'
+include ':app', ':mobiledevknlibs'
