@@ -85,7 +85,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
 //                        (getActivity()).getFragmentManager().beginTransaction().remove(f).commit();
 //                    }
 //            LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-            /*View promptView = layoutInflater.inflate(R.layout.popup_map_absen, null);
+            View promptView = layoutInflater.inflate(R.layout.popup_map_absen, null);
 
             final Activity activity = (Activity) context;
 
@@ -158,7 +158,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
 //
 //                    alertD.setTitle("Distance : "+String.valueOf((int) Math.ceil(distance)) + " meters");
             alertD.setTitle("Your Position");
-            alertD.show();*/
+            alertD.show();
         }
     }
     public Location getLocation(Context activity) {
