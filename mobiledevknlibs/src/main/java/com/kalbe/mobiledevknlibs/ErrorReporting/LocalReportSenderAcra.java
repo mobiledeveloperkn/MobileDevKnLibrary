@@ -41,9 +41,10 @@ public class LocalReportSenderAcra implements ReportSender{
     private static List<ModelError> modelErrors;
     private final Map<ReportField, String> mMapping = new HashMap<ReportField, String>();
     private FileWriter crashReport;
-    Date date = new Date();
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    String fileName = "log_"+dateFormat.format(date)+".txt";
+    static Date date = new Date();
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    static SimpleDateFormat dateFormats = new SimpleDateFormat("yyyy-MM-dd");
+    static String fileName = "log_"+dateFormat.format(date)+".txt";
     public LocalReportSenderAcra(Context ctx, String path) {
         // the destination
         File logFile = new File(path, fileName);
@@ -85,18 +86,6 @@ public class LocalReportSenderAcra implements ReportSender{
 
             Set<Map.Entry<String, String>> set = finalReport.entrySet();
             Iterator<Map.Entry<String, String>> i = set.iterator();
-            int permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE);
-            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
-            }
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            String imeiNumber = tm.getDeviceId().toString();
-            modelErrors = new ArrayList<>();
-            ModelError modelError = new ModelError();
-            modelError.set_txtDeviceId(imeiNumber);
-            modelError.set_dtDate(dateFormat.format(date));
-            modelError.set_txtFileName(fileName);
-            modelErrors.add(modelError);
             buf.append("").append("\n");
 
             ModelDevice modelDevice = DeviceInformation.getDeviceInformation();
@@ -120,7 +109,19 @@ public class LocalReportSenderAcra implements ReportSender{
             Log.e("TAG", "IO ERROR", e);
         }
     }
-    public static List<ModelError> getModelErrorList(){
+    public static List<ModelError> getModelErrorList(Context context){
+        int permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE);
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
+        }
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String imeiNumber = tm.getDeviceId().toString();
+        modelErrors = new ArrayList<>();
+        ModelError modelError = new ModelError();
+        modelError.set_txtDeviceId(imeiNumber);
+        modelError.set_dtDate(dateFormats.format(date));
+        modelError.set_txtFileName(fileName);
+        modelErrors.add(modelError);
         return modelErrors;
     }
 }
