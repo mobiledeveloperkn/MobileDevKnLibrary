@@ -2,10 +2,12 @@ package com.kalbe.mobiledevknlibs.ErrorReporting;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
@@ -109,16 +111,9 @@ public class LocalReportSenderAcra implements ReportSender{
             Log.e("TAG", "IO ERROR", e);
         }
     }
-    public static List<ModelError> getModelErrorList(Context context){
-        int permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE);
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
-        }
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        String imeiNumber = tm.getDeviceId().toString();
+    public static List<ModelError> getModelErrorList(Context context ){
         modelErrors = new ArrayList<>();
         ModelError modelError = new ModelError();
-        modelError.set_txtDeviceId(imeiNumber);
         modelError.set_dtDate(dateFormats.format(date));
         modelError.set_txtFileName(fileName);
         modelErrors.add(modelError);
