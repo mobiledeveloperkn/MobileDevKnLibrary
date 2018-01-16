@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.widget.ImageView;
 
+import com.kalbe.mobiledevknlibs.PermissionChecker.PermissionChecker;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,10 +26,13 @@ public class PickImage {
 
     //contextnya di isi (namaClass.this)
     public static void CaptureImage(Context context, String folderName, String fileName, final int REQUEST_CODE) {
-        Uri uriImage = UriData.getOutputMediaFileUri(context, folderName, fileName);
-        Intent intentCamera1 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intentCamera1.putExtra(MediaStore.EXTRA_OUTPUT, uriImage);
-        ((Activity)context).startActivityForResult(intentCamera1, REQUEST_CODE);
+        boolean result = PermissionChecker.Utility.checkPermission(context);
+        if (result){
+            Uri uriImage = UriData.getOutputMediaImageUri(context, folderName, fileName);
+            Intent intentCamera1 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intentCamera1.putExtra(MediaStore.EXTRA_OUTPUT, uriImage);
+            ((Activity)context).startActivityForResult(intentCamera1, REQUEST_CODE);
+        }
     }
 
 
@@ -62,6 +67,13 @@ public class PickImage {
 
 
     public static void previewCapturedImage(ImageView imageView, Bitmap bitmap, int width, int height) {
+        Bitmap mybitmap = Bitmap.createScaledBitmap(bitmap, width, height, true);
+        imageView.setImageBitmap(mybitmap);
+
+    }
+
+    public static void previewCapturedImageUri(ImageView imageView, Context context, Uri uri, int width, int height) {
+        Bitmap bitmap = decodeStreamReturnBitmap(context, uri);
         Bitmap mybitmap = Bitmap.createScaledBitmap(bitmap, width, height, true);
         imageView.setImageBitmap(mybitmap);
 
@@ -112,6 +124,16 @@ public class PickImage {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        Bitmap bitmap = resizeImageForBlob(photo);
+        return bitmap;
+    }
+
+    //uri harus di definisikan dulu
+    // (uri tidak akan terbaca jika uri merupakan intentReturntData.getData().getPath().toString())
+    public static Bitmap decodeFileReturnBitmap(Context context, Uri uri) {
+        Bitmap photo = null;
+        BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+        photo = BitmapFactory.decodeFile(uri.getPath().toString(), bitmapOptions);
         Bitmap bitmap = resizeImageForBlob(photo);
         return bitmap;
     }

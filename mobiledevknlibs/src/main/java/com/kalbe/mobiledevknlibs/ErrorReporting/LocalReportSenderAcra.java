@@ -13,6 +13,7 @@ import android.util.Log;
 
 import com.kalbe.mobiledevknlibs.DeviceInformation.DeviceInformation;
 import com.kalbe.mobiledevknlibs.DeviceInformation.ModelDevice;
+import com.kalbe.mobiledevknlibs.PermissionChecker.PermissionChecker;
 
 import org.acra.ACRA;
 import org.acra.ACRAConstants;
@@ -111,12 +112,10 @@ public class LocalReportSenderAcra implements ReportSender{
             Log.e("TAG", "IO ERROR", e);
         }
     }
-    public static List<ModelError> getModelErrorList(Context context ){
-        modelErrors = new ArrayList<>();
+    public static ModelError getModelError(Context context ){
         ModelError modelError = new ModelError();
         modelError.set_dtDate(dateFormats.format(date));
         modelError.set_txtFileName(fileName);
-        modelErrors.add(modelError);
-        return modelErrors;
+        return modelError;
     }
 }

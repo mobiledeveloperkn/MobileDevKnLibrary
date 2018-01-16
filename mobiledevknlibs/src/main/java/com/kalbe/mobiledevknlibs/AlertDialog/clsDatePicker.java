@@ -31,8 +31,6 @@ public class clsDatePicker {
         year=calendar.get(Calendar.YEAR);
         month=calendar.get(Calendar.MONTH);
         day=calendar.get(Calendar.DAY_OF_MONTH);
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        editText.setHint(simpleDateFormat.format(calendar.getTime()));
         editText.setHint(formatSimpleDate(calendar.getTime(), format));
     }
     public static void showDatePicker(final Context context, EditText editText, int format) {

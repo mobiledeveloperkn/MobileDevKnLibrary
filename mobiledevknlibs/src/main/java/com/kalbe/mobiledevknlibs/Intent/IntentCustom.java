@@ -1,6 +1,7 @@
 package com.kalbe.mobiledevknlibs.Intent;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,6 +13,10 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.kalbe.mobiledevknlibs.PDFView.PDFViewer;
+import com.kalbe.mobiledevknlibs.PermissionChecker.PermissionChecker;
+import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -38,4 +43,30 @@ public class IntentCustom {
         context.startActivity(myIntent);
     }
 
+    public static void intentPDViewer(Context context, Uri uri, Boolean swipeHorizontal){
+        boolean result= PermissionChecker.Utility.checkPermission(context);
+        if (result){
+            Intent intent =  new Intent(context, PDFViewer.class);
+            intent.putExtra("pdf", uri);
+            intent.putExtra("swipeHorizontal", swipeHorizontal);
+            ((Activity)context).finish();
+            context.startActivity(intent);
+        }
+    }
+
+    public static void intentActionView(Context context, Uri uri, String typeData){
+        boolean result= PermissionChecker.Utility.checkPermission(context);
+        if (result){
+            try {
+                Intent intent = new Intent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setDataAndType(uri, typeData);
+                ((Activity)context).finish();
+                context.startActivity(intent);
+            }catch (ActivityNotFoundException e){
+                ToastCustom.showToasty(context, "You haven't app for open this file", 4);
+            }
+        }
+    }
 }

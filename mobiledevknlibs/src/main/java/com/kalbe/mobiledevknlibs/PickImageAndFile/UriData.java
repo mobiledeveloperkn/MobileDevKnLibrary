@@ -1,9 +1,16 @@
 package com.kalbe.mobiledevknlibs.PickImageAndFile;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import java.io.File;
@@ -27,7 +34,7 @@ public class UriData {
     }
 
     //get location file to save tmp using string path
-    public static Uri getOutputMediaFileUri(Context context, String folderName, String fileName) {
+    public static Uri getOutputMediaImageUri(Context context, String folderName, String fileName) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //use this if Lollipop_Mr1 (API 22) or above
             return FileProvider.getUriForFile(context.getApplicationContext(), context.getApplicationContext().getPackageName()+ ".provider", getOutputMediaImage(folderName, fileName));
         } else {
@@ -35,6 +42,13 @@ public class UriData {
         }
     }
 
+    public static Uri getOutputMediaImageUriCons(Context context, String folderName) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //use this if Lollipop_Mr1 (API 22) or above
+            return FileProvider.getUriForFile(context.getApplicationContext(), context.getApplicationContext().getPackageName()+ ".provider", getOutputMediaImageCons(folderName));
+        } else {
+            return Uri.fromFile(getOutputMediaImageCons(folderName));
+        }
+    }
     //create path file
     public static Uri getOutputMediaFileUri(String folderName, String fileName) {
         // External sdcard location
@@ -69,6 +83,23 @@ public class UriData {
         }
         File mediaFile;
         mediaFile = new File(mediaStorageDir.getPath() + File.separator + fileName + ".png");
+        return mediaFile;
+    }
+
+    //create path file
+    public static File getOutputMediaImageCons(String folderName) {
+        // External sdcard location
+
+        File mediaStorageDir = new File(folderName + File.separator);
+        // Create the storage directory if it does not exist
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d(IMAGE_DIRECTORY_NAME, "Failed create " + IMAGE_DIRECTORY_NAME + " directory");
+                return null;
+            }
+        }
+        File mediaFile;
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator + "tmp_act" + ".png");
         return mediaFile;
     }
 }

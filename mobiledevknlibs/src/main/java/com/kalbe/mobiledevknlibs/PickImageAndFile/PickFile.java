@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.OpenableColumns;
 
+import com.kalbe.mobiledevknlibs.PermissionChecker.PermissionChecker;
+
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -24,13 +26,16 @@ import java.io.OutputStream;
 public class PickFile {
 
     public static void intentPickFile(Context context, int requestCode){
-        Intent pickIntent = new Intent(Intent.ACTION_GET_CONTENT);
-        pickIntent.addCategory(Intent.CATEGORY_OPENABLE);
+        boolean result = PermissionChecker.Utility.checkPermission(context);
+        if (result){
+            Intent pickIntent = new Intent(Intent.ACTION_GET_CONTENT);
+            pickIntent.addCategory(Intent.CATEGORY_OPENABLE);
 //                    pickIntent.setType("application/x-compressed-zip");
-        pickIntent.setType("application/*");
-        String[] mimetypes = {"application/pdf" , "application/msword" , "application/vnd.ms-excel"};
-        pickIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
-        ((Activity)context).startActivityForResult(pickIntent, requestCode);
+            pickIntent.setType("application/*");
+            String[] mimetypes = {"application/pdf" , "application/msword" , "application/vnd.ms-excel"};
+            pickIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
+            ((Activity)context).startActivityForResult(pickIntent, requestCode);
+        }
     }
     public static byte[] getByteArrayFileToSave(Uri path, Context mContext) throws FileNotFoundException
     {
