@@ -369,7 +369,7 @@ public class InputFilters {
     public static void etCapsTextWatcherNoSpaceAtFirst(final EditText editText, final Integer length, final char[] chars){
         editText.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         editText.addTextChangedListener(new TextWatcher() {
-
+            int b = 0;
             @Override
             public void afterTextChanged(Editable editable) {
                 String originalText = editable.toString();
@@ -391,11 +391,16 @@ public class InputFilters {
                 boolean hasChanged = false;
 //                char[] chars = {'.', ','};
                 boolean a = false;
+                for (int j = 0 ; j < originalTextLength; j++){
+                    char currentChar = originalText.charAt(j);
+                    if (currentChar == ' '){
+                        b++;
+                    } else {
+                        break;
+                    }
+                }
                 for (int i = 0; i < originalTextLength; i++) {
                     char currentChar = originalText.charAt(i);
-                    if (currentChar == ' '){
-
-                    }
                     if (isAllowed(currentChar, i) || isThereChar(chars, currentChar)) {
                         if (length != null){
                             if (i < length){
@@ -427,7 +432,7 @@ public class InputFilters {
 
             private boolean isAllowed(char c, int position) {
                 // TODO: Add the filter logic here
-                if (position == 0 && Character.isSpaceChar(c)){
+                if ((position >= 0 && position <= b) &&  Character.isSpaceChar(c)){
                     return false;
                 } else {
                     return Character.isLetterOrDigit(c) || Character.isSpaceChar(c) ;
