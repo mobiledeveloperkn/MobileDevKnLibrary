@@ -25,14 +25,14 @@ import java.io.OutputStream;
 
 public class PickFile {
 
-    public static void intentPickFile(Context context, int requestCode){
+    public static void intentPickFile(Context context, int requestCode, String[] mimetypes){
         boolean result = PermissionChecker.Utility.checkPermission(context);
         if (result){
             Intent pickIntent = new Intent(Intent.ACTION_GET_CONTENT);
             pickIntent.addCategory(Intent.CATEGORY_OPENABLE);
 //                    pickIntent.setType("application/x-compressed-zip");
             pickIntent.setType("application/*");
-            String[] mimetypes = {"application/pdf" , "application/msword" , "application/vnd.ms-excel"};
+//            String[] mimetypes = {"application/pdf" , "application/msword" , "application/vnd.ms-excel"};
             pickIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
             ((Activity)context).startActivityForResult(pickIntent, requestCode);
         }

@@ -1,7 +1,12 @@
 <resources>
     <string name="toast_message">Toast message</string>
-    <string name="app_name">SPG Mobile</string>
-    <string name="nama_app">SPG Mobile</string>
+    <string name="app_name">Kalbenutritionals Mobile</string>
+
+    <string name="nama_app">AccountAuthenticator</string>
+    <string name="label">Kalbenutritionals</string>
+    <string name="signup_title">Create new account</string>
+    <string name="login_label">Log in</string>
+
     <string name="tv_progress">0</string>
     <string name="app_noName"></string>
     <string name="title_activity_login">Sign in</string>

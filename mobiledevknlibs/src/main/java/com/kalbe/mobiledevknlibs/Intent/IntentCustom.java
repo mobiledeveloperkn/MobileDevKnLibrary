@@ -43,6 +43,14 @@ public class IntentCustom {
         context.startActivity(myIntent);
     }
 
+    public static void intentToActivity(Context context, Class<?> cls, String keyPutExtra, String[] value) {
+        Intent myIntent = new Intent(context, cls);
+        myIntent.putExtra(keyPutExtra, value);
+        Activity activity = (Activity) context;
+        activity.finish();
+        context.startActivity(myIntent);
+    }
+
     public static void intentPDViewer(Context context, Uri uri, Boolean swipeHorizontal){
         boolean result= PermissionChecker.Utility.checkPermission(context);
         if (result){

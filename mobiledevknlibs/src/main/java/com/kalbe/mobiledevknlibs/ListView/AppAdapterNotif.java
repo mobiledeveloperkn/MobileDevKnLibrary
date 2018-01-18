@@ -1,4 +1,4 @@
-package com.kalbe.mobiledevknlibs.Helper;
+package com.kalbe.mobiledevknlibs.ListView;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.kalbe.mobiledevknlibs.ListView.clsRowItem;
 import com.kalbe.mobiledevknlibs.R;
 
 import java.util.List;
