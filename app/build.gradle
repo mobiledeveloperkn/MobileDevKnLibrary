@@ -3,6 +3,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
+    useLibrary 'org.apache.http.legacy'
+    lintOptions {
+        abortOnError false
+    }
     defaultConfig {
 //        applicationId "com.kalbe.mobiledevlibrary"
         minSdkVersion 14
