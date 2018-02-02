@@ -351,11 +351,7 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
 		}
 	}
 
-	/**
-	 * enable or disable pull up load more feature.
-	 * 
-	 * @param enable
-	 */
+
 	public void setPullLoadEnable(boolean enable) {
 		mEnablePullLoad = enable;
 		if (!mEnablePullLoad) {
@@ -395,11 +391,7 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
 		}
 	}
 
-	/**
-	 * set last refresh time
-	 * 
-	 * @param time
-	 */
+
 	public void setRefreshTime(String time) {
 		mHeaderTimeView.setText(time);
 	}

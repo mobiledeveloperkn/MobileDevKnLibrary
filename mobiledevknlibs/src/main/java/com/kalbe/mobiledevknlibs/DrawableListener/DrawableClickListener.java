@@ -10,7 +10,7 @@ import android.widget.TextView;
 /**
  * This class can be used to define a listener for a compound drawable.
  * 
- * @author Matthew Weiler
+ *  Matthew Weiler
  * */
 public abstract class DrawableClickListener implements OnTouchListener
 {
@@ -34,7 +34,7 @@ public abstract class DrawableClickListener implements OnTouchListener
     public static final int DRAWABLE_INDEX_BOTTOM = 3;
     /**
      * This stores the default value to be used for the
-     * {@link DrawableClickListener#fuzz}.
+     *  DrawableClickListener#fuzz}.
      * */
     public static final int DEFAULT_FUZZ = 10;
 
@@ -54,15 +54,12 @@ public abstract class DrawableClickListener implements OnTouchListener
      * This will create a new instance of a {@link DrawableClickListener}
      * object.
      * 
-     * @param view
+     * param view
      *            The {@link TextView} that this {@link DrawableClickListener}
      *            is associated with.
-     * @param drawableIndex
+     * param drawableIndex
      *            The index of the drawable that this
      *            {@link DrawableClickListener} pertains to.
-     *            <br />
-     *            <i>use one of the values:
-     *            <b>DrawableOnTouchListener.DRAWABLE_INDEX_*</b></i>
      */
     public DrawableClickListener( final TextView view, final int drawableIndex )
     {
@@ -73,16 +70,12 @@ public abstract class DrawableClickListener implements OnTouchListener
      * This will create a new instance of a {@link DrawableClickListener}
      * object.
      * 
-     * @param view
+     * param view
      *            The {@link TextView} that this {@link DrawableClickListener}
      *            is associated with.
-     * @param drawableIndex
+     * param drawableIndex
      *            The index of the drawable that this
      *            {@link DrawableClickListener} pertains to.
-     *            <br />
-     *            <i>use one of the values:
-     *            <b>DrawableOnTouchListener.DRAWABLE_INDEX_*</b></i>
-     * @param fuzzOverride
      *            The number of pixels of &quot;fuzz&quot; that should be
      *            included to account for the size of a finger.
      */
@@ -123,7 +116,7 @@ public abstract class DrawableClickListener implements OnTouchListener
     /**
      * This method will be fired when the drawable is touched/clicked.
      * 
-     * @return
+     * return
      *         <code>true</code> if the listener has consumed the event;
      *         <code>false</code> otherwise.
      * */
@@ -140,11 +133,11 @@ public abstract class DrawableClickListener implements OnTouchListener
         /* CONSTRUCTORS */
         /**
          * This will create a new instance of a
-         * {@link LeftDrawableClickListener} object.
+         * {link LeftDrawableClickListener} object.
          * 
-         * @param view
-         *            The {@link TextView} that this
-         *            {@link LeftDrawableClickListener} is associated with.
+         * param view
+         *            The {link TextView} that this
+         *            {link LeftDrawableClickListener} is associated with.
          */
         public LeftDrawableClickListener( final TextView view )
         {
@@ -153,12 +146,12 @@ public abstract class DrawableClickListener implements OnTouchListener
 
         /**
          * This will create a new instance of a
-         * {@link LeftDrawableClickListener} object.
+         * {link LeftDrawableClickListener} object.
          * 
-         * @param view
-         *            The {@link TextView} that this
-         *            {@link LeftDrawableClickListener} is associated with.
-         * @param fuzzOverride
+         * param view
+         *            The {link TextView} that this
+         *            {link LeftDrawableClickListener} is associated with.
+         * param fuzzOverride
          *            The number of pixels of &quot;fuzz&quot; that should be
          *            included to account for the size of a finger.
          */
@@ -197,12 +190,12 @@ public abstract class DrawableClickListener implements OnTouchListener
 
         /* CONSTRUCTORS */
         /**
-         * This will create a new instance of a {@link TopDrawableClickListener}
+         * This will create a new instance of a {link TopDrawableClickListener}
          * object.
          * 
-         * @param view
-         *            The {@link TextView} that this
-         *            {@link TopDrawableClickListener} is associated with.
+         * param view
+         *            The {link TextView} that this
+         *            {link TopDrawableClickListener} is associated with.
          */
         public TopDrawableClickListener( final TextView view )
         {
@@ -210,13 +203,13 @@ public abstract class DrawableClickListener implements OnTouchListener
         }
 
         /**
-         * This will create a new instance of a {@link TopDrawableClickListener}
+         * This will create a new instance of a {link TopDrawableClickListener}
          * object.
          * 
-         * @param view
+         * param view
          *            The {@link TextView} that this
          *            {@link TopDrawableClickListener} is associated with.
-         * @param fuzzOverride
+         * param fuzzOverride
          *            The number of pixels of &quot;fuzz&quot; that should be
          *            included to account for the size of a finger.
          */
@@ -256,11 +249,11 @@ public abstract class DrawableClickListener implements OnTouchListener
         /* CONSTRUCTORS */
         /**
          * This will create a new instance of a
-         * {@link RightDrawableClickListener} object.
+         * {link RightDrawableClickListener} object.
          * 
-         * @param view
-         *            The {@link TextView} that this
-         *            {@link RightDrawableClickListener} is associated with.
+         * param view
+         *            The {link TextView} that this
+         *            {link RightDrawableClickListener} is associated with.
          */
         public RightDrawableClickListener( final TextView view )
         {
@@ -269,12 +262,12 @@ public abstract class DrawableClickListener implements OnTouchListener
 
         /**
          * This will create a new instance of a
-         * {@link RightDrawableClickListener} object.
+         * {link RightDrawableClickListener} object.
          * 
-         * @param view
+         * param view
          *            The {@link TextView} that this
          *            {@link RightDrawableClickListener} is associated with.
-         * @param fuzzOverride
+         * param fuzzOverride
          *            The number of pixels of &quot;fuzz&quot; that should be
          *            included to account for the size of a finger.
          */
@@ -314,11 +307,11 @@ public abstract class DrawableClickListener implements OnTouchListener
         /* CONSTRUCTORS */
         /**
          * This will create a new instance of a
-         * {@link BottomDrawableClickListener} object.
+         * {link BottomDrawableClickListener} object.
          * 
-         * @param view
-         *            The {@link TextView} that this
-         *            {@link BottomDrawableClickListener} is associated with.
+         * param view
+         *            The {link TextView} that this
+         *            {link BottomDrawableClickListener} is associated with.
          */
         public BottomDrawableClickListener( final TextView view )
         {
@@ -329,10 +322,10 @@ public abstract class DrawableClickListener implements OnTouchListener
          * This will create a new instance of a
          * {@link BottomDrawableClickListener} object.
          * 
-         * @param view
+         * param view
          *            The {@link TextView} that this
          *            {@link BottomDrawableClickListener} is associated with.
-         * @param fuzzOverride
+         * param fuzzOverride
          *            The number of pixels of &quot;fuzz&quot; that should be
          *            included to account for the size of a finger.
          */

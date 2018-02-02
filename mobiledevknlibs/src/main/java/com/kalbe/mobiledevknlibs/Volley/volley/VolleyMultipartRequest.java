@@ -37,10 +37,10 @@ public class VolleyMultipartRequest extends Request<String> {
     /**
      * Constructor with option method and default header configuration.
      *
-     * @param method        method for now accept POST and GET only
-     * @param url           request destination
-     * @param listener      on success event handler
-     * @param errorListener on error event handler
+     *  method        method for now accept POST and GET only
+     *  url           request destination
+     *  listener      on success event handler
+     *  errorListener on error event handler
      */
     public VolleyMultipartRequest(int method, String url,
                                   Response.Listener<String> listener,
@@ -92,8 +92,8 @@ public class VolleyMultipartRequest extends Request<String> {
     /**
      * Custom method handle data payload.
      *
-     * @return Map data part label with data byte
-     * @throws AuthFailureError
+     *  Map data part label with data byte
+     *  AuthFailureError
      */
     protected Map<String, DataPart> getByteData() throws AuthFailureError {
         return null;
@@ -126,10 +126,10 @@ public class VolleyMultipartRequest extends Request<String> {
     /**
      * Parse string map into data output stream by key and value.
      *
-     * @param dataOutputStream data output stream handle string parsing
-     * @param params           string inputs collection
-     * @param encoding         encode the inputs, default UTF-8
-     * @throws IOException
+     *  dataOutputStream data output stream handle string parsing
+     *  params           string inputs collection
+     *  encoding         encode the inputs, default UTF-8
+     *  IOException
      */
     private void textParse(DataOutputStream dataOutputStream, Map<String, String> params, String encoding) throws IOException {
         try {
@@ -144,9 +144,9 @@ public class VolleyMultipartRequest extends Request<String> {
     /**
      * Parse data into data output stream.
      *
-     * @param dataOutputStream data output stream handle file attachment
-     * @param data             loop through data
-     * @throws IOException
+     *  dataOutputStream data output stream handle file attachment
+     *  data             loop through data
+     *  IOException
      */
     private void dataParse(DataOutputStream dataOutputStream, Map<String, DataPart> data) throws IOException {
         for (Map.Entry<String, DataPart> entry : data.entrySet()) {
@@ -157,10 +157,10 @@ public class VolleyMultipartRequest extends Request<String> {
     /**
      * Write string data into header and data output stream.
      *
-     * @param dataOutputStream data output stream handle string parsing
-     * @param parameterName    name of input
-     * @param parameterValue   value of input
-     * @throws IOException
+     *  dataOutputStream data output stream handle string parsing
+     *  parameterName    name of input
+     *  parameterValue   value of input
+     *  IOException
      */
     private void buildTextPart(DataOutputStream dataOutputStream, String parameterName, String parameterValue) throws IOException {
         dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
@@ -173,10 +173,10 @@ public class VolleyMultipartRequest extends Request<String> {
     /**
      * Write data file into header and data output stream.
      *
-     * @param dataOutputStream data output stream handle data parsing
-     * @param dataFile         data byte as DataPart from collection
-     * @param inputName        name of data input
-     * @throws IOException
+     *  dataOutputStream data output stream handle data parsing
+     *  dataFile         data byte as DataPart from collection
+     *  inputName        name of data input
+     *  IOException
      */
     private void buildDataPart(DataOutputStream dataOutputStream, DataPart dataFile, String inputName) throws IOException {
         dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
@@ -223,8 +223,8 @@ public class VolleyMultipartRequest extends Request<String> {
         /**
          * Constructor with data.
          *
-         * @param name label of data
-         * @param data byte data
+         *  name label of data
+         *  data byte data
          */
         public DataPart(String name, byte[] data) {
             fileName = name;
@@ -234,9 +234,9 @@ public class VolleyMultipartRequest extends Request<String> {
         /**
          * Constructor with mime data type.
          *
-         * @param name     label of data
-         * @param data     byte data
-         * @param mimeType mime data like "image/jpeg"
+         *  name     label of data
+         *  data     byte data
+         *  mimeType mime data like "image/jpeg"
          */
         public DataPart(String name, byte[] data, String mimeType) {
             fileName = name;
@@ -247,7 +247,7 @@ public class VolleyMultipartRequest extends Request<String> {
         /**
          * Getter file name.
          *
-         * @return file name
+         *  file name
          */
         public String getFileName() {
             return fileName;
@@ -256,7 +256,7 @@ public class VolleyMultipartRequest extends Request<String> {
         /**
          * Setter file name.
          *
-         * @param fileName string file name
+         *  fileName string file name
          */
         public void setFileName(String fileName) {
             this.fileName = fileName;
@@ -265,7 +265,7 @@ public class VolleyMultipartRequest extends Request<String> {
         /**
          * Getter content.
          *
-         * @return byte file data
+         *  byte file data
          */
         public byte[] getContent() {
             return content;
@@ -274,7 +274,7 @@ public class VolleyMultipartRequest extends Request<String> {
         /**
          * Setter content.
          *
-         * @param content byte file data
+         *  content byte file data
          */
         public void setContent(byte[] content) {
             this.content = content;
@@ -283,7 +283,7 @@ public class VolleyMultipartRequest extends Request<String> {
         /**
          * Getter mime type.
          *
-         * @return mime type
+         *  mime type
          */
         public String getType() {
             return type;
@@ -292,7 +292,7 @@ public class VolleyMultipartRequest extends Request<String> {
         /**
          * Setter mime type.
          *
-         * @param type mime type
+         *  type mime type
          */
         public void setType(String type) {
             this.type = type;

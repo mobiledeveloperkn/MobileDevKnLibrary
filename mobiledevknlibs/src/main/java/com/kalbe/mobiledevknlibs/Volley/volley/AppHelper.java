@@ -18,13 +18,7 @@ import java.io.ByteArrayOutputStream;
  */
 public class AppHelper {
 
-    /**
-     * Turn drawable resource into byte array.
-     *
-     * @param context parent context
-     * @param id      drawable resource id
-     * @return byte array
-     */
+
     public static byte[] getFileDataFromDrawable(Context context, int id) {
         Drawable drawable = ContextCompat.getDrawable(context, id);
         Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
