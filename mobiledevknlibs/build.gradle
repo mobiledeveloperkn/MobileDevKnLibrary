@@ -3,11 +3,11 @@ apply plugin: 'com.novoda.bintray-release'
 publish {
     groupId = 'com.kalbenutritionals.mobiledeveloperkn'
     artifactId = 'mobiledevknlibs'
-    publishVersion = '0.1.3'
+    publishVersion = '0.1.6'
     desc = 'Library that helps SHP Mobile developers'
     licences = ['Apache-2.0']
     uploadName = 'mobiledevknlibs'
-    website = 'https://github.com/aanjunian/MobileDevLibrary.git'
+    website = 'https://github.com/mobiledeveloperkn/MobileDevKnLibrary.git'
 }
 
 android {

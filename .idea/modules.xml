@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MobileDevLibrary.iml" filepath="$PROJECT_DIR$/MobileDevLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MobileDevKnLibrary.iml" filepath="$PROJECT_DIR$/.idea/MobileDevKnLibrary.iml" />
+      <module fileurl="file://D:\TesPull\MobileDevKnLibrary\MobileDevLibrary.iml" filepath="D:\TesPull\MobileDevKnLibrary\MobileDevLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\TesPull\MobileDevKnLibrary\app\app.iml" filepath="D:\TesPull\MobileDevKnLibrary\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobiledevknlibs/mobiledevknlibs.iml" filepath="$PROJECT_DIR$/mobiledevknlibs/mobiledevknlibs.iml" />
+      <module fileurl="file://D:\TesPull\MobileDevKnLibrary\mobiledevknlibs\mobiledevknlibs.iml" filepath="D:\TesPull\MobileDevKnLibrary\mobiledevknlibs\mobiledevknlibs.iml" />
     </modules>
   </component>
 </project>
