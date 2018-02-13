@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -62,19 +63,32 @@ public class IntentCustom {
         }
     }
 
-    public static void intentActionView(Context context, Uri uri, String typeData){
+    public static void intentActionView(Context context, Uri uri, String typeData, Boolean backToFront){
         boolean result= PermissionChecker.Utility.checkPermission(context);
         if (result){
             try {
                 Intent intent = new Intent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setAction(Intent.ACTION_VIEW);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //use this if Lollipop_Mr1 (API 22) or above
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                }
                 intent.setDataAndType(uri, typeData);
                 ((Activity)context).finish();
                 context.startActivity(intent);
             }catch (ActivityNotFoundException e){
-                ToastCustom.showToasty(context, "You haven't app for open this file", 4);
+                if (backToFront){
+                    IntentCustom.intentBackToFront(context);
+                }
+                ToastCustom.showToasty(context, "You haven't app for open this file", 3);
             }
         }
+    }
+
+    public static void intentBackToFront(Context context){
+        Intent parentIntent = NavUtils.getParentActivityIntent((Activity) context);
+        parentIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(parentIntent);
+        ((Activity)context).finish();
     }
 }

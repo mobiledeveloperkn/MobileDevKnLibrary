@@ -33,7 +33,7 @@ public class ListViewCustom {
         return mAdapter;
     }
 
-    public static CardAppAdapter setCardList(Context _ctx, final List<clsSwipeList> swipeList, int format) {
+    public static CardAppAdapter setCardList(Context _ctx, final List<clsSwipeList> swipeList, int color,  int format) {
         final CardAppAdapter mAdapter;
 
         List<String> mAppList = new ArrayList<String>();
@@ -59,7 +59,7 @@ public class ListViewCustom {
 
         }
 
-        mAdapter = new CardAppAdapter(_ctx, mAppList);
+        mAdapter = new CardAppAdapter(_ctx, mAppList,color);
 
         return mAdapter;
 

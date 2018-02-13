@@ -145,6 +145,26 @@ public class PickFile {
         return file;
     }
 
+    public static String getFileName(Context context, Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                }
+            }
+        }
+        if (result == null) {
+            result = uri.getLastPathSegment();
+        }
+        return result;
+    }
+
     public static String getFileName(Context context, int resultCode, Intent fileReturnedIntent) throws FileNotFoundException {
         Uri uri = fileReturnedIntent.getData();
         String fileName = "";

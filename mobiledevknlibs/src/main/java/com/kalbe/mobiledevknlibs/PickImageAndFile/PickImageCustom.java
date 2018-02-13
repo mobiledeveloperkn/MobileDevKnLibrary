@@ -46,7 +46,7 @@ public class PickImageCustom {
         });
         builder.show();
     }
-    public static void CaptureImageCustomUri(Context context, String folderName, final int REQUEST_CODE) {
+    private static void CaptureImageCustomUri(Context context, String folderName, final int REQUEST_CODE) {
         boolean result = PermissionChecker.Utility.checkPermission(context);
         if (result){
             Uri uriImage = UriData.getOutputMediaImageUriCons(context, folderName);
@@ -55,7 +55,7 @@ public class PickImageCustom {
             ((Activity)context).startActivityForResult(intentCamera1, REQUEST_CODE);
         }
     }
-    public  static void galleryIntent(Context context, int REQUEST_CODE) {
+    private static void galleryIntent(Context context, int REQUEST_CODE) {
         boolean result = PermissionChecker.Utility.checkPermission(context);
         if (result){
             Intent pickPhoto = new Intent(Intent.ACTION_PICK,

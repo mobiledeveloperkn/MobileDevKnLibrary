@@ -24,7 +24,7 @@ import java.io.InputStream;
 
 public class PickImage {
 
-    //contextnya di isi (namaClass.this)
+    //contextnya di isi (namaClass.this) kalo dari activity
     public static void CaptureImage(Context context, String folderName, String fileName, final int REQUEST_CODE) {
         boolean result = PermissionChecker.Utility.checkPermission(context);
         if (result){
