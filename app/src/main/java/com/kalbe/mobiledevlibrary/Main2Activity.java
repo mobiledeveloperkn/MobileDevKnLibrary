@@ -38,7 +38,7 @@ public class Main2Activity extends AppCompatActivity {
             clsSwipeList.set_txtTitle(languages[i]);
             lists.add(clsSwipeList);
         }
-        listView.setAdapter(ListViewCustom.setCardList(Main2Activity.this, lists, 0));
+        listView.setAdapter(ListViewCustom.setCardList(Main2Activity.this, lists, R.color.white, 0));
     }
 
     @Override
