@@ -187,14 +187,12 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
                 if (isNetworkEnabled) {
                     if (ActivityCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     }
-                    locationManager.requestLocationUpdates(
-                            LocationManager.NETWORK_PROVIDER,
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
                             1000,
                             0, this);
                     Log.d("Network", "Network Enabled");
                     if (locationManager != null) {
-                        location = locationManager
-                                .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                         if (location != null) {
                             if (mLastLocation != null){
                                 mLastLocation.reset();
@@ -235,7 +233,12 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
         } catch (Exception e) {
             e.printStackTrace();
         }
-        mockStatus = mLastLocation.isFromMockProvider();
+        if (mLastLocation != null) {
+            int intOs = Integer.valueOf(android.os.Build.VERSION.SDK);
+            if (intOs >= 18) {
+                mockStatus = mLastLocation.isFromMockProvider();
+            }
+        }
         if (mockStatus){
 //            new clsMainActivity().showCustomToast(getActivity().getApplicationContext(), "Fake GPS detected, !", false);
             ToastCustom.showToasty(activity.getApplicationContext(),"Fake GPS detected !",4);

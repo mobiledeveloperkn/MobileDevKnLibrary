@@ -23,6 +23,8 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,9 +53,12 @@ import com.kalbe.mobiledevknlibs.PickImageAndFile.UriData;
 import com.kalbe.mobiledevknlibs.Spinner.SpinnerCustom;
 import com.kalbe.mobiledevknlibs.Table.Table;
 import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
+import com.kalbe.mobiledevlibrary.activityTesting.DatePickerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.FileActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.ImageActivity;
+import com.kalbe.mobiledevlibrary.activityTesting.MapsActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.SpinnerActivity;
+import com.kalbe.mobiledevlibrary.activityTesting.TableActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.ToastActivity;
 import com.kalbe.mobiledevlibrary.common.clsItem;
 import com.kalbe.mobiledevlibrary.repo.clsItemRepo;
@@ -65,7 +70,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     ImageView img;
     TextView tvFile;
     String txtPathUserData;
@@ -74,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().setStatusBarColor(getResources().getColor(R.color.primary_color_theme));
+        }
         setContentView(R.layout.activity_main);
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -110,11 +120,23 @@ public class MainActivity extends AppCompatActivity {
                     IntentCustom.intentToActivity(MainActivity.this, ToastActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Image")){
                     IntentCustom.intentToActivity(MainActivity.this, ImageActivity.class, null, null);
+                }else if (contentLibs.get(position).equals("DatePicker")){
+                    IntentCustom.intentToActivity(MainActivity.this, DatePickerActivity.class, null, null);
+                }else if (contentLibs.get(position).equals("Maps")){
+                    IntentCustom.intentToActivity(MainActivity.this, MapsActivity.class, null, null);
+                }else if (contentLibs.get(position).equals("table")){
+                    IntentCustom.intentToActivity(MainActivity.this, TableActivity.class, null, null);
                 }
                 else {
                     ToastCustom.showToastDefault(getApplicationContext(), contentLibs.get(position) +" Belum di buatin contohnya");
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
 }

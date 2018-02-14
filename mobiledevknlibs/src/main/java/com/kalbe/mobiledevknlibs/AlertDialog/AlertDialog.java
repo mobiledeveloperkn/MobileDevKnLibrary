@@ -1,6 +1,7 @@
 package com.kalbe.mobiledevknlibs.AlertDialog;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 
@@ -9,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 public class AlertDialog {
-    public static void alertDialogExit(final Activity activity){
+    public static void alertDialogExit(final Context activity){
         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(activity);
 
         builder.setTitle("Exit");
@@ -18,7 +19,7 @@ public class AlertDialog {
         builder.setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
-                activity.finish();
+                ((Activity)activity).finish();
             }
         });
 

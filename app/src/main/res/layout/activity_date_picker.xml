@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.kalbe.mobiledevlibrary.activityTesting.DatePickerActivity">
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDate"
+        android:background="@drawable/bg_edtext"
+        android:clickable="true"
+        android:drawableRight="@drawable/ic_error"
+        android:focusable="false"
+        android:editable="false"
+        android:hint=""
+        android:maxLength="100"
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDate2"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_edtext"
+        android:clickable="true"
+        android:drawableRight="@drawable/ic_error"
+        android:focusable="false"
+        android:editable="false"
+        android:hint=""
+        android:maxLength="100"
+        android:singleLine="true" />
+
+</LinearLayout>

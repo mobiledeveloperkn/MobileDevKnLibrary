@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.kalbe.mobiledevknlibs.Intent.IntentCustom;
 import com.kalbe.mobiledevknlibs.PickImageAndFile.PickImage;
 import com.kalbe.mobiledevknlibs.PickImageAndFile.PickImageCustom;
 import com.kalbe.mobiledevknlibs.PickImageAndFile.UriData;
@@ -83,5 +84,11 @@ public class ImageActivity extends AppCompatActivity {
                 PickImage.previewCapturedImage(imageView2, thePic, 150, 150);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        IntentCustom.intentBackToFront(this);
     }
 }

@@ -54,7 +54,8 @@ public class ToastActivity extends AppCompatActivity {
                } else if (swipeLists.get(position).get_txtTitle().equals("Toast custom spg mobile false")){
                    ToastCustom.showToastSPGMobile(getApplicationContext(), swipeLists.get(position).get_txtTitle(), false);
                }else if (swipeLists.get(position).get_txtTitle().equals("show Toasty Custom")){
-//                   ToastCustom.showToastyCustom(getApplicationContext(), swipeLists.get(position).get_txtTitle(), , Color.BLUE, 5, false, false);
+                   Drawable icon = getResources().getDrawable(R.drawable.ic_edit);
+                   ToastCustom.showToastyCustom(getApplicationContext(), swipeLists.get(position).get_txtTitle(), icon, Color.BLUE, 5, false, true);
                }
                else {
                    ToastCustom.showToasty(getApplicationContext(), swipeLists.get(position).get_txtTitle(), position+1);
