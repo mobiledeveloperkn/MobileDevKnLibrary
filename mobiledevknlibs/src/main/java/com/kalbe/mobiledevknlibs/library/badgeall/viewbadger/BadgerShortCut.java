@@ -19,9 +19,5 @@ public interface BadgerShortCut {
 	void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException;
     //void executeBages(Context context, int badgeCount) throws ShortcutBadgeException;
 
-    /**
-     * Called to let {@link ShortcutBadger} knows which launchers are supported by this badger. It should return a
-     * {@link List<String>} containing supported launchers package names
-     */
     List<String> getSupportLaunchers();
 }
