@@ -42,8 +42,8 @@ public class DatePickerActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-//        IntentCustom.intentBackToFront(this);
-        com.kalbe.mobiledevknlibs.AlertDialog.AlertDialog.alertDialogExit(DatePickerActivity.this);
+        IntentCustom.intentBackToFront(this);
+//        com.kalbe.mobiledevknlibs.AlertDialog.AlertDialog.alertDialogExit(DatePickerActivity.this);
 
     }
 }

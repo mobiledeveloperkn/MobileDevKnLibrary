@@ -56,6 +56,9 @@ import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
 import com.kalbe.mobiledevlibrary.activityTesting.DatePickerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.FileActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.ImageActivity;
+import com.kalbe.mobiledevlibrary.activityTesting.InfoDeviceActivity;
+import com.kalbe.mobiledevlibrary.activityTesting.InformationCheckerActivity;
+import com.kalbe.mobiledevlibrary.activityTesting.InputFIlterActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.MapsActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.SpinnerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.TableActivity;
@@ -77,6 +80,13 @@ public class MainActivity extends Activity {
     Uri uri = null;
 
     @Override
+    public void onBackPressed() {
+        com.kalbe.mobiledevknlibs.AlertDialog.AlertDialog.alertDialogExit(MainActivity.this);
+//        super.onBackPressed(); delete this one if you want to create alert dialog for exit
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -92,6 +102,14 @@ public class MainActivity extends Activity {
         } else if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
+
+        Button button = (Button) findViewById(R.id.btnExit);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                com.kalbe.mobiledevknlibs.AlertDialog.AlertDialog.alertDialogExit(MainActivity.this);
+            }
+        });
         txtPathUserData= Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "data" + File.separator + "com.mobiledevknlibs" + File.separator + "user_data" + File.separator + "tes" + File.separator;
 
         final List<String> contentLibs = new ArrayList<>();
@@ -105,6 +123,7 @@ public class MainActivity extends Activity {
         contentLibs.add("permission Checkers");
         contentLibs.add("Input Filter");
         contentLibs.add("DatePicker");
+        contentLibs.add("Info Device");
 
         ListView listView = findViewById(R.id.lvContent);
         listView.setAdapter(new CardAppAdapter(getApplicationContext(), contentLibs, Color.WHITE));
@@ -126,17 +145,21 @@ public class MainActivity extends Activity {
                     IntentCustom.intentToActivity(MainActivity.this, MapsActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("table")){
                     IntentCustom.intentToActivity(MainActivity.this, TableActivity.class, null, null);
+                }else if (contentLibs.get(position).equals("Input Filter")){
+                    IntentCustom.intentToActivity(MainActivity.this, InputFIlterActivity.class, null, null);
+                }else if (contentLibs.get(position).equals("error reporting")){
+                    ToastCustom.showToastDefault(getApplicationContext(), contentLibs.get(position) +" sudah ada di apps tinggal di modif");
+                }else if (contentLibs.get(position).equals("permission Checkers")){
+                    ToastCustom.showToastDefault(getApplicationContext(), "liat kodingan di class InformationCheckerActivity");
+                }else if (contentLibs.get(position).equals("Info Device")){
+                    IntentCustom.intentToActivity(MainActivity.this, InfoDeviceActivity.class, null, null);
                 }
-                else {
+                else { 
                     ToastCustom.showToastDefault(getApplicationContext(), contentLibs.get(position) +" Belum di buatin contohnya");
                 }
             }
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
 
-    }
 }
