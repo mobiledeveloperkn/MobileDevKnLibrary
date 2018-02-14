@@ -19,13 +19,12 @@ public class SpinnerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spinner);
-        getSupportActionBar().setHomeButtonEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         Spinner spinner = (Spinner) findViewById(R.id.spnSelectedItem);
         Spinner spinner1 = (Spinner) findViewById(R.id.spnDefault);
 
         List<String> categories = new ArrayList<String>();
+        categories.add("--Select One--");
         categories.add("Automobile");
         categories.add("Business Services");
         categories.add("Computers");

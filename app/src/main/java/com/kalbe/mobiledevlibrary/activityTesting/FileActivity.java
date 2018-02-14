@@ -26,8 +26,6 @@ public class FileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file);
-        getSupportActionBar().setHomeButtonEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         Button button = (Button)findViewById(R.id.btnPickFile);
         Button button1 = (Button)findViewById(R.id.btnsaveFile);

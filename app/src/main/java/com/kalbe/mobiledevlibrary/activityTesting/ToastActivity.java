@@ -25,8 +25,6 @@ public class ToastActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toast);
-        getSupportActionBar().setHomeButtonEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         ListView listView = (ListView) findViewById(R.id.lv_toast);
         final List<clsSwipeList> swipeLists = new ArrayList<>();
