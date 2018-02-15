@@ -24,24 +24,29 @@ public class CustomDatePicker {
     private static Date dt_hidden;
     private static Calendar calendar;
     private static int year,month, day;
-    public static void showHint(EditText editText, int format){
+    public static String YEAR = "year";
+    public static String MONTH =  "month";
+    public static String DAY_OF_MONTH = "day";
+    public static String DATE_MAX = "date_max";
+    public static String DATE_MIN = "date_min";
+    public static void showHint(EditText editText, Bundle bundle, int format) {
         calendar= Calendar.getInstance();
-        year=calendar.get(Calendar.YEAR);
-        month=calendar.get(Calendar.MONTH);
-        day=calendar.get(Calendar.DAY_OF_MONTH);
+        year = bundle.getInt(YEAR);
+        month = bundle.getInt(MONTH);
+        day =  bundle.getInt(DAY_OF_MONTH);
+        calendar.set(year, month, day);
         editText.setHint(formatSimpleDate(calendar.getTime(), format));
     }
-    public static void showDatePicker(Context context, final EditText editText, String title, final int format) {
+    public static void showDatePicker(Context context, final EditText editText, String title, final int format, Bundle bundle) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         final View promptView = layoutInflater.inflate(R.layout.custom_popup_date_picker, null);
         final DatePicker dp = (DatePicker) promptView.findViewById(R.id.dp_tgl);
 
-        Bundle args = new Bundle();
         if ( editText.getText().toString().equals("")) {
-            args.putInt("year", 1918);
-            args.putInt("month", 0);
-            args.putInt("day", 1);
-            dp.init(1918, 0, 1, null);
+            int year = bundle.getInt(YEAR);
+            int month = bundle.getInt(MONTH);
+            int day = bundle.getInt(DAY_OF_MONTH);
+            dp.init(year, month, day, null);
         } else {
             if (dt_hidden != null) {
                 Calendar cal = Calendar.getInstance();
@@ -50,7 +55,14 @@ public class CustomDatePicker {
             }
         }
 
-        dp.setMaxDate(System.currentTimeMillis() - 24 * 60 * 60 * 1000);
+        long max = bundle.getLong(DATE_MAX);
+        long min = bundle.getLong(DATE_MIN);
+        if (max!=0){
+            dp.setMaxDate(max);
+        }
+        if (min!=0){
+            dp.setMinDate(min);
+        }
 
         android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(context);
         alertDialogBuilder.setView(promptView);

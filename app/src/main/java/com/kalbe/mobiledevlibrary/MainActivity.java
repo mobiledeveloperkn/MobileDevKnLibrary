@@ -2,74 +2,41 @@ package com.kalbe.mobiledevlibrary;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.WallpaperManager;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.j256.ormlite.stmt.query.In;
-import com.kalbe.mobiledevknlibs.AlertDialog.clsDatePicker;
-import com.kalbe.mobiledevknlibs.AlertDialog.clsEnumDatePicker.*;
-import com.kalbe.mobiledevknlibs.Converter.Converter;
-import com.kalbe.mobiledevknlibs.DrawableListener.DrawableClickListener;
-import com.kalbe.mobiledevknlibs.InputFilter.InputFilter;
-import com.kalbe.mobiledevknlibs.InputFilter.InputFilters;
+import com.kalbe.mobiledevknlibs.Connection.Connection;
 import com.kalbe.mobiledevknlibs.Intent.IntentCustom;
-import com.kalbe.mobiledevknlibs.Intent.TypeDataIntent;
 import com.kalbe.mobiledevknlibs.ListView.CardAppAdapter;
 import com.kalbe.mobiledevknlibs.ListView.ListViewCustom;
-import com.kalbe.mobiledevknlibs.PDFView.PDFViewer;
-import com.kalbe.mobiledevknlibs.PickImageAndFile.PickFile;
-import com.kalbe.mobiledevknlibs.PickImageAndFile.PickImage;
-import com.kalbe.mobiledevknlibs.PickImageAndFile.PickImageCustom;
-import com.kalbe.mobiledevknlibs.PickImageAndFile.UriData;
-import com.kalbe.mobiledevknlibs.Spinner.SpinnerCustom;
-import com.kalbe.mobiledevknlibs.Table.Table;
 import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
 import com.kalbe.mobiledevlibrary.activityTesting.DatePickerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.FileActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.ImageActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.InfoDeviceActivity;
-import com.kalbe.mobiledevlibrary.activityTesting.InformationCheckerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.InputFIlterActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.MapsActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.SpinnerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.TableActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.ToastActivity;
-import com.kalbe.mobiledevlibrary.common.clsItem;
-import com.kalbe.mobiledevlibrary.repo.clsItemRepo;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,6 +62,8 @@ public class MainActivity extends Activity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.primary_color_theme));
         }
         setContentView(R.layout.activity_main);
+        ConnectivityManager conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        Connection.checkConnectionMobile(conMan);
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -154,7 +123,7 @@ public class MainActivity extends Activity {
                 }else if (contentLibs.get(position).equals("Info Device")){
                     IntentCustom.intentToActivity(MainActivity.this, InfoDeviceActivity.class, null, null);
                 }
-                else { 
+                else {
                     ToastCustom.showToastDefault(getApplicationContext(), contentLibs.get(position) +" Belum di buatin contohnya");
                 }
             }
