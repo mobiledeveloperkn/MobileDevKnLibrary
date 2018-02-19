@@ -16,9 +16,6 @@
 
 package com.kalbe.mobiledevknlibs.library.zXingLib.zxing;
 
-import java.io.IOException;
-
-import jim.h.common.android.lib.zxing.config.ZXingLibConfig;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
@@ -26,6 +23,11 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.util.Log;
+
+import com.kalbe.mobiledevknlibs.R;
+import com.kalbe.mobiledevknlibs.library.zXingLib.zxing.config.ZXingLibConfig;
+
+import java.io.IOException;
 
 /**
  * Manages beeps and vibrations for {@link CaptureActivity}.
@@ -41,7 +43,7 @@ public final class BeepManager {
     private MediaPlayer         mediaPlayer;
     private boolean             playBeep;
     private boolean             vibrate;
-    private ZXingLibConfig      config;
+    private ZXingLibConfig config;
 
     BeepManager(Activity activity, ZXingLibConfig config) {
         this.activity = activity;

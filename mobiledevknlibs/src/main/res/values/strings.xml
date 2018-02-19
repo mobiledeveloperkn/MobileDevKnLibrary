@@ -1,4 +1,7 @@
 <resources>
+    <string name="zxinglib_app_name">ZXingLib</string>
+    <string name="zxinglib_msg_default_status">Place a barcode inside the viewfinder rectangle to scan it. </string>
+
     <string name="toast_message">Toast message</string>
     <string name="app_name">Kalbenutritionals Mobile</string>
 

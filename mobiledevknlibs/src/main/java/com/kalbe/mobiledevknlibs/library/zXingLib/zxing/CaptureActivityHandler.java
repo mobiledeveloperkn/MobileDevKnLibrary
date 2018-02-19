@@ -16,9 +16,6 @@
 
 package com.kalbe.mobiledevknlibs.library.zXingLib.zxing;
 
-import java.util.Vector;
-
-import jim.h.common.android.lib.zxing.camera.CameraManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -29,6 +26,10 @@ import android.util.Log;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.kalbe.mobiledevknlibs.R;
+import com.kalbe.mobiledevknlibs.library.zXingLib.zxing.camera.CameraManager;
+
+import java.util.Vector;
 
 /**
  * This class handles all the messaging which comprises the state machine for
@@ -66,7 +67,7 @@ public final class CaptureActivityHandler extends Handler {
     @Override
     public void handleMessage(Message message) {
     	int id=message.what;
-    	if(id==R.id.zxinglib_auto_focus){
+    	if(id== R.id.zxinglib_auto_focus){
     		if (state == State.PREVIEW) {
                 CameraManager.get().requestAutoFocus(this, R.id.zxinglib_auto_focus);
             }

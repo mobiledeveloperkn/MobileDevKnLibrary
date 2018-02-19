@@ -16,11 +16,6 @@
 
 package com.kalbe.mobiledevknlibs.library.zXingLib.zxing;
 
-import java.io.IOException;
-import java.util.Vector;
-
-import jim.h.common.android.lib.zxing.camera.CameraManager;
-import jim.h.common.android.lib.zxing.config.ZXingLibConfig;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -43,6 +38,12 @@ import android.widget.TextView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.google.zxing.ResultPoint;
+import com.kalbe.mobiledevknlibs.R;
+import com.kalbe.mobiledevknlibs.library.zXingLib.zxing.camera.CameraManager;
+import com.kalbe.mobiledevknlibs.library.zXingLib.zxing.config.ZXingLibConfig;
+
+import java.io.IOException;
+import java.util.Vector;
 
 /**
  * The barcode reader activity itself. This is loosely based on the
@@ -66,7 +67,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     private String                 characterSet;
     private InactivityTimer        inactivityTimer;
     private BeepManager            beepManager;
-    private ZXingLibConfig         config;
+    private ZXingLibConfig config;
 
     ViewfinderView getViewfinderView() {
         return viewfinderView;

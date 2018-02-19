@@ -64,6 +64,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:9.0.2'
     compile 'com.google.android.gms:play-services-appindexing:9.0.2'
     compile 'com.google.android.gms:play-services-location:9.0.2'
+    compile files('libs/jars/core.jar')
 //    compile project(path: ':library_PullToRefreshSwipeMenuListView')
 }
 

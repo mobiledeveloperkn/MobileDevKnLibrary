@@ -16,11 +16,6 @@
 
 package com.kalbe.mobiledevknlibs.library.zXingLib.zxing;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jim.h.common.android.lib.zxing.R;
-import jim.h.common.android.lib.zxing.camera.CameraManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -31,6 +26,11 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.google.zxing.ResultPoint;
+import com.kalbe.mobiledevknlibs.R;
+import com.kalbe.mobiledevknlibs.library.zXingLib.zxing.camera.CameraManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This view is overlaid on top of the camera preview. It adds the viewfinder rectangle and partial
