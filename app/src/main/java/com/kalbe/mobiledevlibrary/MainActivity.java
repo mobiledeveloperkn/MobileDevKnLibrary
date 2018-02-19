@@ -33,6 +33,7 @@ import com.kalbe.mobiledevlibrary.activityTesting.ImageActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.InfoDeviceActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.InputFIlterActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.MapsActivity;
+import com.kalbe.mobiledevlibrary.activityTesting.SanckbarActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.SpinnerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.TableActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.ToastActivity;
@@ -94,6 +95,7 @@ public class MainActivity extends Activity {
         contentLibs.add("Input Filter");
         contentLibs.add("DatePicker");
         contentLibs.add("Info Device");
+        contentLibs.add("Snackbar");
 
         ListView listView = findViewById(R.id.lvContent);
         listView.setAdapter(new CardAppAdapter(getApplicationContext(), contentLibs, Color.WHITE));
@@ -123,6 +125,8 @@ public class MainActivity extends Activity {
                     ToastCustom.showToastDefault(getApplicationContext(), "liat kodingan di class InformationCheckerActivity");
                 }else if (contentLibs.get(position).equals("Info Device")){
                     IntentCustom.intentToActivity(MainActivity.this, InfoDeviceActivity.class, null, null);
+                }else if (contentLibs.get(position).equals("Snackbar")){
+                    IntentCustom.intentToActivity(MainActivity.this, SanckbarActivity.class, null, null);
                 }
                 else {
                     ToastCustom.showToastDefault(getApplicationContext(), contentLibs.get(position) +" Belum di buatin contohnya");
