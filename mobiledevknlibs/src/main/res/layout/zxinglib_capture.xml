@@ -6,7 +6,7 @@
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:layout_centerInParent="true" />
 
-	<jim.h.common.android.lib.zxing.ViewfinderView
+	<ViewfinderView
 		android:id="@+id/zxinglib_viewfinder_view" android:layout_width="fill_parent"
 		android:layout_height="fill_parent" android:background="@color/zxinglib_transparent" />
 

@@ -1,10 +1,12 @@
 package com.kalbe.mobiledevknlibs.library.zXingLib.zxing.integrator;
 
-import jim.h.common.android.lib.zxing.CaptureActivity;
-import jim.h.common.android.lib.zxing.Intents;
-import jim.h.common.android.lib.zxing.config.ZXingLibConfig;
+
 import android.app.Activity;
 import android.content.Intent;
+
+import com.kalbe.mobiledevknlibs.library.zXingLib.zxing.CaptureActivity;
+import com.kalbe.mobiledevknlibs.library.zXingLib.zxing.Intents;
+import com.kalbe.mobiledevknlibs.library.zXingLib.zxing.config.ZXingLibConfig;
 
 /**
  * @author Jim.H
