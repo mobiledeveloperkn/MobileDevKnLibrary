@@ -28,6 +28,13 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <!--related toast-->
+    <string name="submit">Submit</string>
+    <string name="confirm">Confirm</string>
+    <string name="action_confirm">Are you sure?</string>
+    <string name="loading">Loading Data... Please Wait</string>
+
+
     <string name="press_go">Press \'Go/Next\' to next step</string>
     <string name="tv_version">Android.20160322.001</string>
     <string name="tv_role">Role</string>

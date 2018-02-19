@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kalbe.mobiledevlibrary.MainActivity">
+    tools:context="com.kalbe.mobiledevlibrary.activityTesting.InfoDeviceActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lvContent"></ListView>
-        <Button
+            android:id="@+id/lv_infoDevice"></ListView>
+
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnExit"
-            android:text="Exit"/>
+            android:id="@+id/lv_sensor"></ListView>
     </LinearLayout>
+
 </ScrollView>

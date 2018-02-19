@@ -1,6 +1,5 @@
 package com.kalbe.mobiledevlibrary.activityTesting;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -13,7 +12,7 @@ import android.widget.ListView;
 
 import com.kalbe.mobiledevknlibs.ListView.ListViewCustom;
 import com.kalbe.mobiledevknlibs.ListView.clsSwipeList;
-import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
+import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
 import com.kalbe.mobiledevlibrary.R;
 
 import java.util.ArrayList;

@@ -13,11 +13,10 @@ import com.kalbe.mobiledevknlibs.Intent.IntentCustom;
 import com.kalbe.mobiledevknlibs.PickImageAndFile.PickImage;
 import com.kalbe.mobiledevknlibs.PickImageAndFile.PickImageCustom;
 import com.kalbe.mobiledevknlibs.PickImageAndFile.UriData;
-import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
+import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
 import com.kalbe.mobiledevlibrary.R;
 
 import java.io.File;
-import java.net.URI;
 
 public class ImageActivity extends AppCompatActivity {
     ImageView imageView1, imageView2;

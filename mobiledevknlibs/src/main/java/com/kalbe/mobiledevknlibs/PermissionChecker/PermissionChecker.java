@@ -115,7 +115,7 @@ public class PermissionChecker extends Activity {
 
     }
     public static class Utility {
-        public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+        private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
         public static boolean checkPermission(final Context context)
         {
             int currentAPIVersion = Build.VERSION.SDK_INT;

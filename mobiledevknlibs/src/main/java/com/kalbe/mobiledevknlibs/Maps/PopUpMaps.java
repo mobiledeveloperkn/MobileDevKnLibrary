@@ -27,9 +27,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kalbe.mobiledevknlibs.R;
-import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
-
-import static android.content.Context.LOCATION_SERVICE;
+import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
 
 /**
  * Created by Robert on 31/12/2017.

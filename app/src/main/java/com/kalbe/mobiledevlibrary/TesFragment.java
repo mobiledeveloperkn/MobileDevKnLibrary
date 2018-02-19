@@ -37,7 +37,7 @@ public class TesFragment extends Fragment {
         editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomDatePicker.showDatePicker(getContext(), editText, "Set Date", 1);
+//                CustomDatePicker.showDatePicker(getContext(), editText, "Set Date", 1);
             }
         });
 //        editText.setOnTouchListener(new DrawableClickListener.RightDrawableClickListener(etTglLhr) {

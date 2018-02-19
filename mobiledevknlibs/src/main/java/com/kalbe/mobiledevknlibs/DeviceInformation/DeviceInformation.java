@@ -11,7 +11,8 @@ import java.util.List;
  * Created by Robert on 04/01/2018.
  */
 
-public class DeviceInformation {
+public class
+DeviceInformation {
     SensorManager smm;
     List<Sensor> sensors;
     public static ModelDevice getDeviceInformation(){
