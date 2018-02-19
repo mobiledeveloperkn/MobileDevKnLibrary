@@ -4,31 +4,13 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
-import android.provider.MediaStore;
 import android.support.v4.app.NavUtils;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.ImageView;
 
 import com.kalbe.mobiledevknlibs.PDFView.PDFViewer;
 import com.kalbe.mobiledevknlibs.PermissionChecker.PermissionChecker;
-import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
-
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
 
 /**
  * Created by Dewi Oktaviani on 1/2/2018.

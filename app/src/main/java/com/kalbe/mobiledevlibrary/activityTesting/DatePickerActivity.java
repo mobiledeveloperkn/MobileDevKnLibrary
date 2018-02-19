@@ -37,13 +37,13 @@ public class DatePickerActivity extends AppCompatActivity {
         args.putLong(CustomDatePicker.DATE_MIN, c.getTimeInMillis());
 
         //set hint for date
-        CustomDatePicker.showHint(editText, args, clsDatePicker.clsFormatDatePicker.standard0);
+        CustomDatePicker.showHint(editText, args, CustomDatePicker.format.standard0);
 
 
         editText.setOnTouchListener(new DrawableClickListener.RightDrawableClickListener(editText) {
             @Override
             public boolean onDrawableClick() {
-                CustomDatePicker.showDatePicker(DatePickerActivity.this, editText, "Date of Birth", clsDatePicker.clsFormatDatePicker.standard0, args);
+                CustomDatePicker.showDatePicker(DatePickerActivity.this, editText, "Date of Birth", CustomDatePicker.format.standard0, args);
                 return false;
             }
         });
@@ -54,7 +54,7 @@ public class DatePickerActivity extends AppCompatActivity {
         argg.putInt(clsDatePicker.MONTH, 0);
         argg.putInt(clsDatePicker.DAY_OF_MONTH, 1);
         //set hint date
-        clsDatePicker.showHint(editText1, argg, clsDatePicker.clsFormatDatePicker.standard2);
+        clsDatePicker.showHint(editText1, argg, clsDatePicker.format.standard2);
 
 
         //set bundle for date picker if we want to have different setting between hint and datepicker
@@ -70,7 +70,7 @@ public class DatePickerActivity extends AppCompatActivity {
         editText1.setOnTouchListener(new DrawableClickListener.RightDrawableClickListener(editText1) {
             @Override
             public boolean onDrawableClick() {
-                clsDatePicker.showDatePicker(DatePickerActivity.this, editText1, "Select Date", arg, clsDatePicker.clsFormatDatePicker.standard2, clsDatePicker.clsStyleDatePicker.Theme_DeviceDefault_Dialog);
+                clsDatePicker.showDatePicker(DatePickerActivity.this, editText1, "Select Date", arg, clsDatePicker.format.standard2, clsDatePicker.style.Theme_DeviceDefault_Dialog);
                 return false;
             }
         });

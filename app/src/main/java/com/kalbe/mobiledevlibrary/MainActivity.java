@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ import com.kalbe.mobiledevknlibs.Connection.Connection;
 import com.kalbe.mobiledevknlibs.Intent.IntentCustom;
 import com.kalbe.mobiledevknlibs.ListView.CardAppAdapter;
 import com.kalbe.mobiledevknlibs.ListView.ListViewCustom;
-import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
+import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
 import com.kalbe.mobiledevlibrary.activityTesting.DatePickerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.FileActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.ImageActivity;
@@ -63,7 +64,7 @@ public class MainActivity extends Activity {
         }
         setContentView(R.layout.activity_main);
         ConnectivityManager conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        Connection.checkConnectionMobile(conMan);
+        NetworkInfo.State mobile = Connection.checkConnectionMobile(conMan);
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {

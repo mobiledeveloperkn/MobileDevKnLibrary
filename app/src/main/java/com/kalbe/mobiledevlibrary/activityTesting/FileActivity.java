@@ -1,6 +1,5 @@
 package com.kalbe.mobiledevlibrary.activityTesting;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
@@ -14,7 +13,7 @@ import com.kalbe.mobiledevknlibs.Intent.IntentCustom;
 import com.kalbe.mobiledevknlibs.Intent.TypeDataIntent;
 import com.kalbe.mobiledevknlibs.PickImageAndFile.PickFile;
 import com.kalbe.mobiledevknlibs.PickImageAndFile.UriData;
-import com.kalbe.mobiledevknlibs.Toast.ToastCustom;
+import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
 import com.kalbe.mobiledevlibrary.R;
 
 import java.io.File;

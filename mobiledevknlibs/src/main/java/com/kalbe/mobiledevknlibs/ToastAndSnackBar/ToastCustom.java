@@ -1,4 +1,4 @@
-package com.kalbe.mobiledevknlibs.Toast;
+package com.kalbe.mobiledevknlibs.ToastAndSnackBar;
 
 import android.content.Context;
 import android.graphics.Color;

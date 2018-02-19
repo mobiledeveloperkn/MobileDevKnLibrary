@@ -22,7 +22,7 @@ import java.util.GregorianCalendar;
  * Created by Robert on 05/01/2018.
  */
 
-public class clsDatePicker {
+public class clsDatePicker{
     private static Calendar calendar;
     private static EditText dateView;
     private static int year, month, day;
@@ -111,14 +111,14 @@ public class clsDatePicker {
                 .append(month).append("/").append(year));
     }
 
-    public static class clsFormatDatePicker {
+    public static class format {
         public static final int standard0 = 0; //01 - JAN - 2008
         public static final int standard1 = 1; //01 JAN 2008
         public static final int standard2 = 2; //31/12/2008
         public static final int standard3 = 3; //31-12-2008
     }
 
-    public static class clsStyleDatePicker {
+    public static class style {
         public static final int Theme_Holo_Dialog = android.R.style.Theme_Holo_Dialog;
         public static final int Theme_Holo_Light_Dialog = android.R.style.Theme_Holo_Light_Dialog;
         public static final int Theme_DeviceDefault_Dialog = android.R.style.Theme_DeviceDefault_Dialog;
