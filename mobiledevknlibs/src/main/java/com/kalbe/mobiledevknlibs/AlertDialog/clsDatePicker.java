@@ -22,23 +22,23 @@ import java.util.GregorianCalendar;
  * Created by Robert on 05/01/2018.
  */
 
-public class clsDatePicker{
+public class clsDatePicker {
     private static Calendar calendar;
     private static EditText dateView;
     private static int year, month, day;
     private static DatePickerDialog dialog;
     private static int frm;
     public static String YEAR = "year";
-    public static String MONTH =  "month";
+    public static String MONTH = "month";
     public static String DAY_OF_MONTH = "day";
     public static String DATE_MAX = "date_max";
     public static String DATE_MIN = "date_min";
 
     public static void showHint(EditText editText, Bundle bundle, int format) {
-        calendar= Calendar.getInstance();
+        calendar = Calendar.getInstance();
         year = bundle.getInt(YEAR);
         month = bundle.getInt(MONTH);
-        day =  bundle.getInt(DAY_OF_MONTH);
+        day = bundle.getInt(DAY_OF_MONTH);
         calendar.set(year, month, day);
         editText.setHint(formatSimpleDate(calendar.getTime(), format));
     }
@@ -46,12 +46,18 @@ public class clsDatePicker{
     public static void showDatePicker(final Context context, EditText editText, String title, Bundle bundle, int format, int styles) {
         frm = format;
         dateView = editText;
-        if (editText.getText().toString().equals("")){
+        if (editText.getText().toString().equals("")) {
             year = bundle.getInt(YEAR);
             month = bundle.getInt(MONTH);
-            day =  bundle.getInt(DAY_OF_MONTH);
+            day = bundle.getInt(DAY_OF_MONTH);
         }
-        dialog = new DatePickerDialog(context, styles, myDateListener, year, month, day);;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            //tambah style baru
+            dialog = new DatePickerDialog(context, styles, myDateListener, year, month, day);
+        } else {
+            dialog = new DatePickerDialog(context, myDateListener, year, month, day);
+        }
+//        dialog = new DatePickerDialog(context, styles, myDateListener, year, month, day);
         long max = bundle.getLong(DATE_MAX);
         long min = bundle.getLong(DATE_MIN);
         if (max != 0) {
@@ -121,7 +127,5 @@ public class clsDatePicker{
     public static class style {
         public static final int Theme_Holo_Dialog = android.R.style.Theme_Holo_Dialog;
         public static final int Theme_Holo_Light_Dialog = android.R.style.Theme_Holo_Light_Dialog;
-        public static final int Theme_DeviceDefault_Dialog = android.R.style.Theme_DeviceDefault_Dialog;
-        public static final int Theme_DeviceDefault_Light_Dialog = android.R.style.Theme_DeviceDefault_Light_Dialog;
     }
 }

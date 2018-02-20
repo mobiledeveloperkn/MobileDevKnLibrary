@@ -70,7 +70,7 @@ public class DatePickerActivity extends AppCompatActivity {
         editText1.setOnTouchListener(new DrawableClickListener.RightDrawableClickListener(editText1) {
             @Override
             public boolean onDrawableClick() {
-                clsDatePicker.showDatePicker(DatePickerActivity.this, editText1, "Select Date", arg, clsDatePicker.format.standard2, clsDatePicker.style.Theme_DeviceDefault_Dialog);
+                clsDatePicker.showDatePicker(DatePickerActivity.this, editText1, "Select Date", arg, clsDatePicker.format.standard2, clsDatePicker.style.Theme_Holo_Light_Dialog);
                 return false;
             }
         });
