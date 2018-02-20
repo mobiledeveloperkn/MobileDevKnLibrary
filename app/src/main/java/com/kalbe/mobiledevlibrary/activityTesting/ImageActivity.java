@@ -43,6 +43,7 @@ public class ImageActivity extends AppCompatActivity {
                 PickImageCustom.selectImageProfile(ImageActivity.this, file, 600, 700);
             }
         });
+
     }
 
     @Override
@@ -79,7 +80,19 @@ public class ImageActivity extends AppCompatActivity {
                 //get the returned data
                 Bundle extras = data.getExtras();
                 //get the cropped bitmap
-                Bitmap thePic = extras.getParcelable("data"); //key "data" setting defaultnya
+                Bitmap thePic = null;
+
+                Uri uri = data.getData();
+                if (uri != null){
+                    thePic = PickImage.decodeStreamReturnBitmap(this, uri);
+                }
+                //key "data" setting defaultnya
+                if  (extras != null){
+                    Bitmap tempBitm = extras.getParcelable("data");
+                    if (tempBitm != null){
+                        thePic = tempBitm;
+                    }
+                }
                 PickImage.previewCapturedImage(imageView2, thePic, 150, 150);
             }
         }

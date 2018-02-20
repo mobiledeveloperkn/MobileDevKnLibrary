@@ -12,7 +12,7 @@ import android.widget.TextView;
  */
 
 public class SnackBar {
-    public void snackbarShort(CoordinatorLayout coordinatorLayout, String message, int color) {
+    public static void snackbarShort(CoordinatorLayout coordinatorLayout, String message, int color) {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_SHORT);
         View snackBarView = snackbar.getView();
         snackBarView.setBackgroundResource(color);
@@ -21,7 +21,7 @@ public class SnackBar {
         snackbar.show();
     }
 
-    public void snackbarLong(CoordinatorLayout coordinatorLayout, String message, int color) {
+    public static void snackbarLong(CoordinatorLayout coordinatorLayout, String message, int color) {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
         View snackBarView = snackbar.getView();
         snackBarView.setBackgroundResource(color);
@@ -30,7 +30,7 @@ public class SnackBar {
         snackbar.show();
     }
 
-    public void snackbarIndefinite(CoordinatorLayout coordinatorLayout, String message, int color) {
+    public static Snackbar snackbarIndefinite(CoordinatorLayout coordinatorLayout, String message, int color) {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_INDEFINITE);
         View snackBarView = snackbar.getView();
         snackBarView.setBackgroundResource(color);
@@ -45,8 +45,8 @@ public class SnackBar {
         });
         TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(Color.WHITE);
-        snackbar.show();
-
+//        snackbar.show();
+        return snackbar;
     }
 
 }

@@ -27,6 +27,7 @@ import com.kalbe.mobiledevknlibs.Intent.IntentCustom;
 import com.kalbe.mobiledevknlibs.ListView.CardAppAdapter;
 import com.kalbe.mobiledevknlibs.ListView.ListViewCustom;
 import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
+import com.kalbe.mobiledevlibrary.activityTesting.CreateNotificationActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.DatePickerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.FileActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.ImageActivity;
@@ -96,6 +97,7 @@ public class MainActivity extends Activity {
         contentLibs.add("DatePicker");
         contentLibs.add("Info Device");
         contentLibs.add("Snackbar");
+        contentLibs.add("Badger");
 
         ListView listView = findViewById(R.id.lvContent);
         listView.setAdapter(new CardAppAdapter(getApplicationContext(), contentLibs, Color.WHITE));
@@ -127,6 +129,8 @@ public class MainActivity extends Activity {
                     IntentCustom.intentToActivity(MainActivity.this, InfoDeviceActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Snackbar")){
                     IntentCustom.intentToActivity(MainActivity.this, SanckbarActivity.class, null, null);
+                }else if (contentLibs.get(position).equals("Badger")){
+                    IntentCustom.intentToActivity(MainActivity.this, CreateNotificationActivity.class, null, null);
                 }
                 else {
                     ToastCustom.showToastDefault(getApplicationContext(), contentLibs.get(position) +" Belum di buatin contohnya");
