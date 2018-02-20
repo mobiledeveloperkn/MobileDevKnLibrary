@@ -27,11 +27,15 @@ public class InfoDeviceActivity extends AppCompatActivity {
         final List<String> contentLibs = new ArrayList<>();
         ModelDevice modelDevice = DeviceInformation.getDeviceInformation();
 
-        contentLibs.add(modelDevice.getVersionSDK());
+        contentLibs.add("SDK" + modelDevice.getVersionSDK());
         contentLibs.add(modelDevice.getProduct());
         contentLibs.add(modelDevice.getOsVersion());
         contentLibs.add(modelDevice.getModel());
         contentLibs.add(modelDevice.getDevice());
+
+
+
+        contentLibs.add("SENSOR");
 
         List<Sensor> sensors = new DeviceInformation().getSensorInformation(this);
         if (sensors!=null&&sensors.size()>0){

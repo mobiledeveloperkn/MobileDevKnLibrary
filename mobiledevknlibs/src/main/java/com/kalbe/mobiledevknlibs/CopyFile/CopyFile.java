@@ -1,4 +1,4 @@
-package com.kalbe.mobiledevknlibs.CopyDB;
+package com.kalbe.mobiledevknlibs.CopyFile;
 
 import android.content.Context;
 import android.os.Environment;
@@ -17,8 +17,8 @@ import java.nio.channels.FileChannel;
  * Created by Dewi Oktaviani on 1/15/2018.
  */
 
-public class CopyDB {
-    public static void copyFile(Context context, String currPath)
+public class CopyFile {
+    public static void copyFileDB(Context context, String currPath)
     {
         try
         {
@@ -63,6 +63,33 @@ public class CopyDB {
             FileInputStream fis = new FileInputStream(dbFile);
             String txtPathUserData= Environment.getExternalStorageDirectory()+File.separator+ copyDbName;
             File yourFile = new File(txtPathUserData);
+            yourFile.createNewFile();
+            OutputStream output = new FileOutputStream(yourFile);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = fis.read(buffer)) > 0) {
+                output.write(buffer, 0, length);
+            }
+            output.flush();
+            output.close();
+            fis.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /*
+* copy
+* pathFrom : lokasi file sebelumnya
+* pathTo : lokasi file untuk paste
+*/
+    public static void copyFile(String pathFrom, String pathTo) throws IOException {
+
+        try {
+            File dbFile = new File(pathFrom);
+            FileInputStream fis = new FileInputStream(dbFile);
+            File yourFile = new File(pathTo);
             yourFile.createNewFile();
             OutputStream output = new FileOutputStream(yourFile);
             byte[] buffer = new byte[1024];
