@@ -51,13 +51,13 @@ public class clsDatePicker {
             month = bundle.getInt(MONTH);
             day = bundle.getInt(DAY_OF_MONTH);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            //tambah style baru
-            dialog = new DatePickerDialog(context, styles, myDateListener, year, month, day);
-        } else {
-            dialog = new DatePickerDialog(context, myDateListener, year, month, day);
-        }
-//        dialog = new DatePickerDialog(context, styles, myDateListener, year, month, day);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            //tambah style baru
+//            dialog = new DatePickerDialog(context, styles, myDateListener, year, month, day);
+//        } else {
+//            dialog = new DatePickerDialog(context, myDateListener, year, month, day);
+//        }
+        dialog = new DatePickerDialog(context, styles, myDateListener, year, month, day);
         long max = bundle.getLong(DATE_MAX);
         long min = bundle.getLong(DATE_MIN);
         if (max != 0) {

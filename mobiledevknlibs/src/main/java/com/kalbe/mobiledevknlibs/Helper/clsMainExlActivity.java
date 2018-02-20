@@ -59,12 +59,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-//import edu.swu.pulltorefreshswipemenulistview.library.PullToRefreshSwipeMenuListView;
-//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.bean.SwipeMenu;
-//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.bean.SwipeMenuItem;
-//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnSwipeListener;
-//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.SwipeMenuCreator;
-
 /**
  * Created by Dewi Oktaviani on 1/8/2018.
  */
