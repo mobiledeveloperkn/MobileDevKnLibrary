@@ -9,15 +9,26 @@ import android.support.design.widget.CoordinatorLayout;
  */
 
 public class Connection {
-    public static NetworkInfo.State checkConnectionMobile(ConnectivityManager connectivityManager){
+    public static String checkConnectionMobile(ConnectivityManager connectivityManager){
+        String connection= null;
         //mobile
         NetworkInfo.State mobile = connectivityManager.getNetworkInfo(0).getState();
-        return mobile;
+        if (mobile == NetworkInfo.State.CONNECTED || mobile == NetworkInfo.State.CONNECTING){
+            connection = "connected";
+        } else {
+            connection = "no connectivity";
+        }
+        return connection;
     }
-    public static NetworkInfo.State checkConnectionWifi(ConnectivityManager connectivityManager){
+    public static String checkConnectionWifi(ConnectivityManager connectivityManager){
+        String connection= null;
         //wifi
         NetworkInfo.State wifi = connectivityManager.getNetworkInfo(1).getState();
-
-        return wifi;
+        if (wifi == NetworkInfo.State.CONNECTED || wifi == NetworkInfo.State.CONNECTING){
+            connection = "connected";
+        }else {
+            connection = "no connectivity";
+        }
+        return connection;
     }
 }

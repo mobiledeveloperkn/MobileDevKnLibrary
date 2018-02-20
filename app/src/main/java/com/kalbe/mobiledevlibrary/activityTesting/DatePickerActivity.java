@@ -67,7 +67,7 @@ public class DatePickerActivity extends AppCompatActivity {
         cal.add(Calendar.YEAR, 2);//maximum 2 tahun dari tahun yang di set
         arg.putLong(clsDatePicker.DATE_MAX, cal.getTimeInMillis());
 //        args.putLong(clsDatePicker.DATE_MIN, c.getTimeInMillis());
-        editText1.setOnTouchListener(new DrawableClickListener.RightDrawableClickListener(editText1) { 
+        editText1.setOnTouchListener(new DrawableClickListener.RightDrawableClickListener(editText1) {
             @Override
             public boolean onDrawableClick() {
                 clsDatePicker.showDatePicker(DatePickerActivity.this, editText1, "Select Date", arg, clsDatePicker.format.standard2, clsDatePicker.style.Theme_Holo_Dialog);

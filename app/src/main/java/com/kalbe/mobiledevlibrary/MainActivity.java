@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -26,6 +28,7 @@ import com.kalbe.mobiledevknlibs.Connection.Connection;
 import com.kalbe.mobiledevknlibs.Intent.IntentCustom;
 import com.kalbe.mobiledevknlibs.ListView.CardAppAdapter;
 import com.kalbe.mobiledevknlibs.ListView.ListViewCustom;
+import com.kalbe.mobiledevknlibs.ToastAndSnackBar.SnackBar;
 import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
 import com.kalbe.mobiledevlibrary.activityTesting.CreateNotificationActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.DatePickerActivity;
@@ -66,7 +69,25 @@ public class MainActivity extends Activity {
         }
         setContentView(R.layout.activity_main);
         ConnectivityManager conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo.State mobile = Connection.checkConnectionMobile(conMan);
+        String mobile = Connection.checkConnectionMobile(conMan);
+        String wifi = Connection.checkConnectionWifi(conMan);
+        String connection = null;
+        if (mobile=="connected"||wifi=="connected"){
+            connection = "connected";
+        } else {
+            connection = "no conectivity";
+        }
+        CoordinatorLayout cl = (CoordinatorLayout)findViewById(R.id.cl_main);
+        final Snackbar snackbar =  SnackBar.snackbarIndefinite(cl, connection, R.color.red);
+        snackbar.show();
+        snackbar.setActionTextColor(Color.WHITE);
+        snackbar.setAction("Close", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                snackbar.dismiss();
+            }
+        });
+
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
