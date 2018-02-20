@@ -14,13 +14,14 @@ import java.util.Calendar;
 
 public class DatePickerActivity extends AppCompatActivity {
 
-    EditText editText, editText1;
+    EditText editText, editText1, editText2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_picker);
         editText = (EditText)findViewById(R.id.txtDate);
         editText1 = (EditText) findViewById(R.id.txtDate2);
+        editText2 = (EditText) findViewById(R.id.txtDate3);
 
         //set bundle
         Calendar c = Calendar.getInstance();
@@ -74,11 +75,35 @@ public class DatePickerActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
+        //set bundle for hint
+        final  Bundle bundles = new Bundle();
+        bundles.putInt(clsDatePicker.YEAR, 2018);
+        bundles.putInt(clsDatePicker.MONTH, 0);
+        bundles.putInt(clsDatePicker.DAY_OF_MONTH, 1);
+        //set hint date
+        clsDatePicker.showHint(editText2, bundles, clsDatePicker.format.standard1);
+
+        //set bundle for date picker if we want to have different setting between hint and datepicker
+        Calendar calendar = Calendar.getInstance();
+        final  Bundle bundle = new Bundle();
+        bundle.putInt(clsDatePicker.YEAR, 2018);
+        bundle.putInt(clsDatePicker.MONTH, 0);
+        bundle.putInt(clsDatePicker.DAY_OF_MONTH, 1);
+        editText2.setOnTouchListener(new DrawableClickListener.RightDrawableClickListener(editText2) {
+            @Override
+            public boolean onDrawableClick() {
+                clsDatePicker.showDatePicker(DatePickerActivity.this, editText2, "Select Date", bundle, clsDatePicker.format.standard1, clsDatePicker.style.Theme_Holo_Dialog);
+                return false;
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+//        super.onBackPressed();
         IntentCustom.intentBackToFront(this);
 //        com.kalbe.mobiledevknlibs.AlertDialog.AlertDialog.alertDialogExit(DatePickerActivity.this);
 
