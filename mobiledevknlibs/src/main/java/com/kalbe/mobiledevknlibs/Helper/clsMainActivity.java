@@ -62,24 +62,12 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.UUID;
 
-//import edu.swu.pulltorefreshswipemenulistview.library.PullToRefreshSwipeMenuListView;
-//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.bean.SwipeMenu;
-//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.bean.SwipeMenuItem;
-//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnSwipeListener;
-//import edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.SwipeMenuCreator;
-
-
-//import com.kalbe.bl.mCounterNumberBL;
 
 public class clsMainActivity extends Activity {
     private static final String TAG_UUID = "id";
     String months[] = {"", "January", "February", "March", "April",
             "May", "June", "July", "August", "September",
             "October", "November", "December"};
-
-    public void onClickHome(View v) {
-//	    goHome (this);
-    }
 
     public String getTxtSTatus(String intSubmit, String intSync) {
         String txtStatus = "";
@@ -98,12 +86,6 @@ public class clsMainActivity extends Activity {
         toast.setGravity(Gravity.TOP, 25, 400);
         toast.show();
     }
-//	public void goHome(Context context) {
-//		finish();
-//	    final Intent intent = new Intent(context, Home.class);
-//	    intent.setFlags (Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//	    context.startActivity (intent);
-//	}
 
     public String convertNumberDec(double dec) {
         double harga = dec;
@@ -172,46 +154,6 @@ public class clsMainActivity extends Activity {
         matrix.postRotate(angle);
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
     }
-//	public OnClickListener listener(final Context _ctx, final String MenuName){
-//		OnClickListener listener = new OnClickListener() {
-//			@SuppressLint("NewApi")
-//			@Override
-//			public void onClick(View v) {
-//				Context wrapper = wrapper=new ContextThemeWrapper(_ctx, R.style.PopupMenu);
-//			    PopupMenu popup = new PopupMenu(wrapper, v);
-//			    final mMenuData _dataMenu=new mMenuBL().getMenuDataByMenuName(MenuName);
-//				if(MenuName.contains("mnPurchaseOrderKBN")){
-//					popup.getMenuInflater().inflate(R.menu.popup_menu_and_menu_online, popup.getMenu());
-//				}else if(MenuName.contains("InventoryInAddData")){
-//					popup.getMenuInflater().inflate(R.menu.add_data_grn, popup.getMenu());
-//				}else{
-//					popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
-//				}
-//				popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-//					@Override
-//					public boolean onMenuItemClick(MenuItem item) {
-//						if(MenuName.contains("mnInventoryKBN")){
-//							new InventoryInHeader().doStuff(_ctx, item.getTitle().toString());
-//						}else if(MenuName.contains("mnStockopname")){
-//							new OpnameHeader().doStuff(_ctx, item.getTitle().toString());
-//						}else if(MenuName.contains("mnInventoryOut")){
-//							new InventoryOutHeader().doStuff(_ctx, item.getTitle().toString());
-//						}else if(MenuName.contains("mnPengeluaranKBN")){
-//							new PengeluaranHeader().doStuff(_ctx, item.getTitle().toString());
-//						}else if(MenuName.contains("mnPurchaseOrderKBN")){
-//							new PurchaseOrderHeader().doStuff(_ctx, item.getTitle().toString());
-//						}else if(MenuName.contains("InventoryInAddData")){
-//							new InventoryIn().doStuff(_ctx, item.getTitle().toString());
-//						}
-//						return true;
-//					}
-//				});
-//
-//				popup.show();
-//			}
-//		};
-//		return listener;
-//	}
 
     public void IsReachable(Context context) {
         try {
@@ -386,25 +328,6 @@ public class clsMainActivity extends Activity {
         String randomUUIDString = uuid.toString();
         return randomUUIDString;
     }
-//	 public void setTitleForm(String txtTitle){
-//		 TextView tvTitle=(TextView) findViewById(R.id.tvTitle);
-//		 tvTitle.setText(txtTitle);
-//	 }
-//	 public void setTitleGreeting(String txtTitle){
-//		 TextView tvTitle=(TextView) findViewById(R.id.tvTittleGreeting);
-//		 tvTitle.setText("HI, " + txtTitle);
-//	 }
-
-    //	 public void setConfirmForm(View _acty,String txtTitle,String txtDesc){
-//		 TextView tvTitle=(TextView) _acty.findViewById(R.id.tvTitle);
-//		 TextView tvDesc=(TextView) _acty.findViewById(R.id.tvDesc);
-//		 tvTitle.setText(txtTitle);
-//		 tvDesc.setText(txtDesc);
-//	 }
-    protected void onRestoreInstanceState1(Bundle savedInstanceState1) {
-        // TODO Auto-generated method stub
-
-    }
 
 
     public AppAdapter setList(Context _ctx, final List<clsSwipeList> swipeList) {
@@ -425,25 +348,6 @@ public class clsMainActivity extends Activity {
 
     }
 
-
-//    public AppAdapterViewCusBase setListViewCusBase(Context _ctx, final List<clsSwipeList> swipeList) {
-//        final AppAdapterViewCusBase mAdapter;
-//        PullToRefreshSwipeMenuListView mListView;
-//        Handler mHandler;
-//
-//        List<clsSwipeList> mAppList = new ArrayList<clsSwipeList>();
-//
-//        for (int i = 0; i < swipeList.size(); i++) {
-//            clsSwipeList getswipeList = swipeList.get(i);
-//            mAppList.add(getswipeList);
-//        }
-//
-//        mAdapter = new AppAdapterViewCusBase(_ctx, mAppList);
-//
-//        return mAdapter;
-//
-//    }
-
     public AppAdapter setList2(Context _ctx, final List<clsSwipeList> swipeList) {
         final AppAdapter mAdapter;
         PullToRefreshSwipeMenuListView mListView;
@@ -462,23 +366,6 @@ public class clsMainActivity extends Activity {
 
     }
 
-//    public static AdapterListProductCustomerBased setListProductCusBased(Context _ctx, final ArrayList<clsSwipeList> swipeList) {
-//        final AdapterListProductCustomerBased mAdapter;
-//        PullToRefreshSwipeMenuListView mListView;
-//        Handler mHandler;
-//
-//        ArrayList<clsSwipeList> mAppList = new ArrayList<>();
-//
-//        for (int i = 0; i < swipeList.size(); i++) {
-//            clsSwipeList getswipeList = swipeList.get(i);
-//            mAppList.add(getswipeList);
-//        }
-//
-//        mAdapter = new AdapterListProductCustomerBased(_ctx, mAppList);
-//
-//        return mAdapter;
-//
-//    }
 
     public SwipeMenuCreator setCreator(final Context _ctx, final Map<String, HashMap> map) {
         SwipeMenuCreator creator = new SwipeMenuCreator() {
@@ -678,34 +565,6 @@ public class clsMainActivity extends Activity {
 
         return mAdapter;
     }
-
-    /*public edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnMenuItemClickListener mmenuSwipeListener(final Context _ctx, final String action, final Map<String, HashMap> mapMenu, final List<clsRowItem> swipeList) {
-        edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnMenuItemClickListener listener = new edu.swu.pulltorefreshswipemenulistview.library.swipemenu.interfaces.OnMenuItemClickListener() {
-
-            @SuppressWarnings("unchecked")
-            @Override
-            public void onMenuItemClick(int position, SwipeMenu menu, int index) {
-                HashMap<String, String> selectedMenu = mapMenu.get(String.valueOf(index));
-
-                clsRowItem getswipeList = swipeList.get(position);
-                if (action == "LNotifi") {
-                    String uuid = getswipeList.get_txtId();
-                    Intent intent = new Intent(getApplicationContext(), FragmentNotifcation.class);
-                    intent.putExtra("From", "Notif");
-                    intent.putExtra(TAG_UUID, String.valueOf(uuid));
-                    startActivity(intent);
-                }
-            }
-
-        };
-        return listener;
-    }*/
-
-    /*public void setHeaderFull() {
-        ImageView imgV = (ImageView) findViewById(R.id.imageView1);
-        imgV.setAdjustViewBounds(true);
-        imgV.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    }*/
 
     public void showCustomToast(Context context, String message, Boolean status) {
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

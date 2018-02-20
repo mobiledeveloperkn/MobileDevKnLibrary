@@ -4,6 +4,10 @@ package com.kalbe.mobiledevknlibs.Converter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
+import org.json.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 /**
  * Created by Robert on 03/01/2018.
  */
@@ -35,5 +39,10 @@ public class Converter {
 
         return fragment;
     }
-//    public static int
+    public static JSONArray ResultJsonArray(String dt) throws ParseException{
+        JSONParser jsonParser = new JSONParser();
+        Object obj = jsonParser.parse(dt);
+        JSONArray lang= (JSONArray) obj;
+        return lang;
+    }
 }

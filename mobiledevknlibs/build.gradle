@@ -14,6 +14,7 @@ android {
 
     publishNonDefault true
     compileSdkVersion 26
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
@@ -64,6 +65,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:9.0.2'
     compile 'com.google.android.gms:play-services-appindexing:9.0.2'
     compile 'com.google.android.gms:play-services-location:9.0.2'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
     compile files('libs/jars/core.jar')
 //    compile project(path: ':library_PullToRefreshSwipeMenuListView')
 }

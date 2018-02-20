@@ -80,6 +80,7 @@ public class PickImageCustom {
             cropIntent.putExtra("outputY", 256);
             //retrieve data on return
             cropIntent.putExtra("return-data", true);
+            cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriImage);
             //start the activity - we handle returning in onActivityResult
             ((Activity)context).startActivityForResult(cropIntent, REQUEST_CODE);
         }
