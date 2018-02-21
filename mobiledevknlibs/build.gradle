@@ -66,6 +66,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-appindexing:9.0.2'
     compile 'com.google.android.gms:play-services-location:9.0.2'
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+    compile 'com.github.wooplr:Spotlight:1.2.3'
     compile files('libs/jars/core.jar')
 //    compile project(path: ':library_PullToRefreshSwipeMenuListView')
 }

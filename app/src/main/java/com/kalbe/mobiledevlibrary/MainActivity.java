@@ -41,6 +41,7 @@ import com.kalbe.mobiledevlibrary.activityTesting.SanckbarActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.SpinnerActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.TableActivity;
 import com.kalbe.mobiledevlibrary.activityTesting.ToastActivity;
+import com.kalbe.mobiledevlibrary.activityTesting.TourGuideActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -118,7 +119,8 @@ public class MainActivity extends Activity {
         contentLibs.add("DatePicker");
         contentLibs.add("Info Device");
         contentLibs.add("Snackbar");
-        contentLibs.add("Badger");
+        contentLibs.add("Badger"); 
+        contentLibs.add("Tour Guide");
 
         ListView listView = findViewById(R.id.lvContent);
         listView.setAdapter(new CardAppAdapter(getApplicationContext(), contentLibs, Color.WHITE));
@@ -152,12 +154,15 @@ public class MainActivity extends Activity {
                     IntentCustom.intentToActivity(MainActivity.this, SanckbarActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Badger")){
                     IntentCustom.intentToActivity(MainActivity.this, CreateNotificationActivity.class, null, null);
+                }else if (contentLibs.get(position).equals("Tour Guide")){
+                    IntentCustom.intentToActivity(MainActivity.this, TourGuideActivity.class, null, null);
                 }
                 else {
                     ToastCustom.showToastDefault(getApplicationContext(), contentLibs.get(position) +" Belum di buatin contohnya");
                 }
             }
         });
+        String[] tes = new String[]{"ansgdhasgdhhsjkckldsjck"};
     }
 
 
