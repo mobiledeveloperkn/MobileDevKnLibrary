@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.kalbe.mobiledevknlibs.Helper.clsMainActivity;
 import com.kalbe.mobiledevknlibs.R;
 import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
 
@@ -156,6 +158,108 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
 //
 //                    alertD.setTitle("Distance : "+String.valueOf((int) Math.ceil(distance)) + " meters");
             alertD.setTitle("Your Position");
+            alertD.show();
+        }
+    }
+
+    public void popUpMapsTwoCoordinates(final Context context, int resViewLayout, String paramLatitude, String paramLongitude) {
+        Boolean valid = true;
+
+        double latitude = 0;
+        double longitude = 0;
+        double latitudeOutlet = 0;
+        double longitudeOutlet = 0;
+
+        //Check longlat my location
+        try {
+
+            latitude = getLocation(context).getLatitude();
+            longitude = getLocation(context).getLongitude();
+        } catch (Exception ex) {
+            valid = false;
+            ToastCustom.showToastSPGMobile(context, "Your location not found", false);
+        }
+
+        //Check longlat outlet location
+        if (valid) {
+            try {
+                latitudeOutlet = Double.parseDouble(String.valueOf(paramLatitude));
+                longitudeOutlet = Double.parseDouble(String.valueOf(paramLongitude));
+            } catch (Exception ex) {
+                valid = false;
+                ToastCustom.showToastSPGMobile(context, "Outlet location not found", false);
+            }
+        }
+
+        if (valid) {
+
+            LayoutInflater layoutInflater = LayoutInflater.from(context);
+
+            View promptView = layoutInflater.inflate(resViewLayout, null);
+
+            GoogleMap mMap;
+            mMap = ((MapFragment) ((Activity)context).getFragmentManager().findFragmentById(R.id.map)).getMap();
+
+            if (mMap == null) {
+                mMap = ((MapFragment) ((Activity)context).getFragmentManager().findFragmentById(R.id.map)).getMap();
+            }
+
+            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Your Location");
+
+            MarkerOptions markerOutlet = new MarkerOptions().position(new LatLng(latitudeOutlet, longitudeOutlet)).title("Outlet Location");
+
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+            final LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            builder.include(marker.getPosition());
+            builder.include(markerOutlet.getPosition());
+
+            mMap.clear();
+            mMap.addMarker(marker);
+            mMap.addMarker(markerOutlet);
+
+            final GoogleMap finalMMap = mMap;
+            mMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+
+                @Override
+                public void onCameraChange(CameraPosition arg0) {
+                    // Move camera.
+                    finalMMap.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 60));
+                    // Remove listener to prevent position reset on camera move.
+                    finalMMap.setOnCameraChangeListener(null);
+                }
+            });
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+            alertDialogBuilder.setView(promptView);
+            alertDialogBuilder
+                    .setCancelable(false)
+                    .setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    MapFragment f = (MapFragment) ((Activity)context).getFragmentManager().findFragmentById(R.id.map);
+                                    if (f != null) {
+                                        ((Activity)context).getFragmentManager().beginTransaction().remove(f).commit();
+                                    }
+
+                                    dialog.dismiss();
+                                }
+                            });
+            final AlertDialog alertD = alertDialogBuilder.create();
+
+            Location locationA = new Location("point A");
+
+            locationA.setLatitude(latitude);
+            locationA.setLongitude(longitude);
+
+            Location locationB = new Location("point B");
+
+            locationB.setLatitude(latitudeOutlet);
+            locationB.setLongitude(longitudeOutlet);
+
+            float distance = locationA.distanceTo(locationB);
+
+            alertD.setTitle(String.valueOf((int) Math.ceil(distance)) + " meters");
             alertD.show();
         }
     }

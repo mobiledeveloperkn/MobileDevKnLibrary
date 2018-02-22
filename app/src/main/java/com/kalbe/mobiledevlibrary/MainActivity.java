@@ -28,6 +28,7 @@ import com.kalbe.mobiledevknlibs.Connection.Connection;
 import com.kalbe.mobiledevknlibs.Intent.IntentCustom;
 import com.kalbe.mobiledevknlibs.ListView.CardAppAdapter;
 import com.kalbe.mobiledevknlibs.ListView.ListViewCustom;
+import com.kalbe.mobiledevknlibs.PermissionChecker.PermissionMaps;
 import com.kalbe.mobiledevknlibs.ToastAndSnackBar.SnackBar;
 import com.kalbe.mobiledevknlibs.ToastAndSnackBar.ToastCustom;
 import com.kalbe.mobiledevlibrary.activityTesting.CreateNotificationActivity;
@@ -119,7 +120,7 @@ public class MainActivity extends Activity {
         contentLibs.add("DatePicker");
         contentLibs.add("Info Device");
         contentLibs.add("Snackbar");
-        contentLibs.add("Badger"); 
+        contentLibs.add("Badger");
         contentLibs.add("Tour Guide");
 
         ListView listView = findViewById(R.id.lvContent);

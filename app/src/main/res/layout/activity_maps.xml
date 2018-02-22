@@ -12,4 +12,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnMaps"
         android:text="Show Maps"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnMaps2"
+        android:text="Show Maps Two Coordinate"/>
 </LinearLayout>
