@@ -18,7 +18,7 @@ public class InformationCheckerActivity extends AppCompatActivity {
 //        PermissionChecker.getpermissionSPGAll(this);
 
         //untuk mendapatkan permission namun satu persatu sesuai dengan enum yang di inginkan
-        PermissionChecker.getPermission(this, IntPermissionChecker.CALENDAR);
+        new PermissionChecker().getPermission(this, IntPermissionChecker.CALENDAR);
 
         //method utility untuk secara manual minta user memberikan akses read and write storage
         PermissionChecker.Utility.checkPermission(InformationCheckerActivity.this);

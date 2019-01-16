@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
             connection = "no conectivity";
         }
         CoordinatorLayout cl = (CoordinatorLayout)findViewById(R.id.cl_main);
-        final Snackbar snackbar =  SnackBar.snackbarIndefinite(cl, connection, R.color.red);
+        final Snackbar snackbar =  new SnackBar().snackbarIndefinite(cl, connection, R.color.red);
         snackbar.show();
         snackbar.setActionTextColor(Color.WHITE);
         snackbar.setAction("Close", new View.OnClickListener() {
@@ -130,36 +130,36 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (contentLibs.get(position).equals("Spinner")){
-                    IntentCustom.intentToActivity(MainActivity.this, SpinnerActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, SpinnerActivity.class, null, null);
                 } else if (contentLibs.get(position).equals("File & pdfViewer")){
-                    IntentCustom.intentToActivity(MainActivity.this, FileActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, FileActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Toast")){
-                    IntentCustom.intentToActivity(MainActivity.this, ToastActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, ToastActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Image")){
-                    IntentCustom.intentToActivity(MainActivity.this, ImageActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, ImageActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("DatePicker")){
-                    IntentCustom.intentToActivity(MainActivity.this, DatePickerActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, DatePickerActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Maps")){
-                    IntentCustom.intentToActivity(MainActivity.this, MapsActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, MapsActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("table")){
-                    IntentCustom.intentToActivity(MainActivity.this, TableActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, TableActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Input Filter")){
-                    IntentCustom.intentToActivity(MainActivity.this, InputFIlterActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, InputFIlterActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("error reporting")){
-                    ToastCustom.showToastDefault(getApplicationContext(), contentLibs.get(position) +" sudah ada di apps tinggal di modif");
+                    new ToastCustom().showToastDefault(getApplicationContext(), contentLibs.get(position) +" sudah ada di apps tinggal di modif");
                 }else if (contentLibs.get(position).equals("permission Checkers")){
-                    ToastCustom.showToastDefault(getApplicationContext(), "liat kodingan di class InformationCheckerActivity");
+                    new ToastCustom().showToastDefault(getApplicationContext(), "liat kodingan di class InformationCheckerActivity");
                 }else if (contentLibs.get(position).equals("Info Device")){
-                    IntentCustom.intentToActivity(MainActivity.this, InfoDeviceActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, InfoDeviceActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Snackbar")){
-                    IntentCustom.intentToActivity(MainActivity.this, SanckbarActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, SanckbarActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Badger")){
-                    IntentCustom.intentToActivity(MainActivity.this, CreateNotificationActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, CreateNotificationActivity.class, null, null);
                 }else if (contentLibs.get(position).equals("Tour Guide")){
-                    IntentCustom.intentToActivity(MainActivity.this, TourGuideActivity.class, null, null);
+                    new IntentCustom().intentToActivity(MainActivity.this, TourGuideActivity.class, null, null);
                 }
                 else {
-                    ToastCustom.showToastDefault(getApplicationContext(), contentLibs.get(position) +" Belum di buatin contohnya");
+                    new ToastCustom().showToastDefault(getApplicationContext(), contentLibs.get(position) +" Belum di buatin contohnya");
                 }
             }
         });

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.kalbe.mobiledevknlibs.Helper.clsMainExlActivity;
 import com.kalbe.mobiledevknlibs.R;
@@ -15,6 +16,7 @@ import com.kalbe.mobiledevknlibs.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Dewi Oktaviani on 1/8/2018.
@@ -36,6 +38,15 @@ public class CustomDatePicker {
         day =  bundle.getInt(DAY_OF_MONTH);
         calendar.set(year, month, day);
         editText.setHint(formatSimpleDate(calendar.getTime(), format));
+    }
+
+    public static void showHint(TextView textView, Bundle bundle, int format) {
+        calendar= Calendar.getInstance();
+        year = bundle.getInt(YEAR);
+        month = bundle.getInt(MONTH);
+        day =  bundle.getInt(DAY_OF_MONTH);
+        calendar.set(year, month, day);
+        textView.setHint(formatSimpleDate(calendar.getTime(), format));
     }
     public static void showDatePicker(Context context, final EditText editText, String title, final int format, Bundle bundle) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
@@ -96,15 +107,78 @@ public class CustomDatePicker {
 
     }
 
+    public static void showDatePicker(Context context, final TextView textView, String title, final int format, Bundle bundle) {
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        final View promptView = layoutInflater.inflate(R.layout.custom_popup_date_picker, null);
+        final DatePicker dp = (DatePicker) promptView.findViewById(R.id.dp_tgl);
+
+        if ( textView.getText().toString().equals("")) {
+            int year = bundle.getInt(YEAR);
+            int month = bundle.getInt(MONTH);
+            int day = bundle.getInt(DAY_OF_MONTH);
+            dp.init(year, month, day, null);
+        } else {
+            if (dt_hidden != null) {
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(dt_hidden);
+                dp.init(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH), null);
+            }
+        }
+
+        long max = bundle.getLong(DATE_MAX);
+        long min = bundle.getLong(DATE_MIN);
+        if (max!=0){
+            dp.setMaxDate(max);
+        }
+        if (min!=0){
+            dp.setMinDate(min);
+        }
+
+        android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(context);
+        alertDialogBuilder.setView(promptView);
+        alertDialogBuilder
+                .setPositiveButton("Set", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String date = formatDate(dp, format);
+                        textView.setText(date);
+                        textView.setHint("");
+
+                        int day = dp.getDayOfMonth();
+                        int month = dp.getMonth();
+                        int year = dp.getYear();
+
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(year, month, day);
+
+                        dt_hidden = calendar.getTime();
+                    }
+                })
+                .setCancelable(false)
+                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        final android.support.v7.app.AlertDialog alertD = alertDialogBuilder.create();
+        alertD.setTitle(title);
+        alertD.show();
+
+    }
+
     public static String formatDate(DatePicker dp, int format){
         String date = "";
+        SimpleDateFormat month_date = new SimpleDateFormat("MMM");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(dp.getYear(), dp.getMonth(), dp.getDayOfMonth());
+        String month_name = month_date.format(calendar.getTime());
         String month2 = clsMainExlActivity.months[dp.getMonth() + 1];
         switch (format){
             case 0:
-                date = String.valueOf(dp.getDayOfMonth()) + " - " + month2 + " - " + String.valueOf(dp.getYear());
+                date = String.valueOf(dp.getDayOfMonth()) + " - " + month_name + " - " + String.valueOf(dp.getYear());
                 break;
             case 1:
-                date = String.valueOf(dp.getDayOfMonth()) + " " + month2 + " " + String.valueOf(dp.getYear());
+                date = String.valueOf(dp.getDayOfMonth()) + " " + month_name + " " + String.valueOf(dp.getYear());
                 break;
             case 2:
                 date = String.valueOf(dp.getYear()) + "/" + String.valueOf(dp.getMonth() + 1) + "/"+ String.valueOf(dp.getDayOfMonth())  ;

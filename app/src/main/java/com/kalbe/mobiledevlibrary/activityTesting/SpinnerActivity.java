@@ -31,9 +31,9 @@ public class SpinnerActivity extends AppCompatActivity {
         categories.add("Education");
         categories.add("Personal");
         categories.add("Travel");
-        SpinnerCustom.setAdapterSpinner(spinner, getApplicationContext(), R.layout.custom_spinner, categories);
+        new SpinnerCustom().setAdapterSpinner(spinner, getApplicationContext(), R.layout.custom_spinner, categories);
         spinner1.setAdapter(new SpinnerCustom.MySpinnerAdapter(getApplicationContext(), R.layout.custom_spinner, categories));
-        SpinnerCustom.selectedItemByText(getApplicationContext(), spinner, categories, "Travel");
+        new SpinnerCustom().selectedItemByText(getApplicationContext(), spinner, categories, "Travel");
     }
 
     @Override

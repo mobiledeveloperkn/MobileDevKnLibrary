@@ -38,13 +38,13 @@ public class SanckbarActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (contentLibs.get(position).equals("Short")) {
                     //ini kalo mau makek snacbar short
-                    SnackBar.snackbarShort(cl, "Hello i'm snackbar short", R.color.red);
+                    new SnackBar().snackbarShort(cl, "Hello i'm snackbar short", R.color.red);
                 } else if (contentLibs.get(position).equals("Long")) {
                     //ini kalo mau makek snacbar long
-                    SnackBar.snackbarShort(cl, "Hello i'm snackbar Long", R.color.title_background);
+                    new SnackBar().snackbarShort(cl, "Hello i'm snackbar Long", R.color.title_background);
                 } else if (contentLibs.get(position).equals("Indefinite")) {
                     //ini kalo mau pakek snackbar indefinite
-                    final Snackbar snackbar = SnackBar.snackbarIndefinite(cl, "Hello i'm snackbar Indefinite", R.color.red_bold);
+                    final Snackbar snackbar = new SnackBar().snackbarIndefinite(cl, "Hello i'm snackbar Indefinite", R.color.red_bold);
                     snackbar.show();
                     snackbar.setActionTextColor(Color.WHITE);
                     snackbar.setAction("Close", new View.OnClickListener() {
@@ -61,6 +61,6 @@ public class SanckbarActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
-        IntentCustom.intentBackToFront(this);
+        new IntentCustom().intentBackToFront(this);
     }
 }

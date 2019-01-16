@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
-publish {
-    groupId = 'com.kalbenutritionals.mobiledeveloperkn'
-    artifactId = 'mobiledevknlibs'
-    publishVersion = '0.2.0'
-    desc = 'Library that helps SHP Mobile developers'
-    licences = ['Apache-2.0']
-    uploadName = 'mobiledevknlibs'
-    website = 'https://github.com/mobiledeveloperkn/MobileDevKnLibrary.git'
-}
+//apply plugin: 'com.novoda.bintray-release'
+//publish {
+//    groupId = 'com.kalbenutritionals.mobiledeveloperkn'
+//    artifactId = 'mobiledevknlibs'
+//    publishVersion = '0.2.0'
+//    desc = 'Library that helps SHP Mobile developers'
+//    licences = ['Apache-2.0']
+//    uploadName = 'mobiledevknlibs'
+//    website = 'https://github.com/mobiledeveloperkn/MobileDevKnLibrary.git'
+//}
 
 android {
 

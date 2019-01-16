@@ -44,6 +44,6 @@ public class MapsActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        IntentCustom.intentBackToFront(this);
+        new IntentCustom().intentBackToFront(this);
     }
 }

@@ -64,13 +64,13 @@ public class MyApp extends Application{
         ACRA.init(this);
         //pengaturan path di letakkan di applicationnya
         String txtPathUserData= Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "data" + File.separator + "com.mobiledevknlibs" + File.separator + "user_data" + File.separator + "tes" + File.separator;
-        ACRA.getErrorReporter().setReportSender(new LocalReportSenderAcra(this, txtPathUserData));
-        ModelError modelErrors = LocalReportSenderAcra.getModelError(getBaseContext());
+//        ACRA.getErrorReporter().setReportSender(new LocalReportSenderAcra(this, txtPathUserData));
+//        ModelError modelErrors = LocalReportSenderAcra.getModelError(getBaseContext());
         clsSales sales = new clsSales();
         sales.setSalesId(1);
         sales.setTxtItemCode("cek");
-        sales.setTxtItemName(modelErrors.get_txtFileName());
-        sales.setTxtPrice(modelErrors.get_dtDate());
+//        sales.setTxtItemName(modelErrors.get_txtFileName());
+//        sales.setTxtPrice(modelErrors.get_dtDate());
         sales.setTxtCategory("Minuman");
         sales.setTxtJmlItem("2");
         sales.setTxtTotalItem("2");

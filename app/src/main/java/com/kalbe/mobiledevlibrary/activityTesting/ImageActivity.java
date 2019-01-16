@@ -33,7 +33,7 @@ public class ImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                PickImage.CaptureImage(ImageActivity.this, file, "img", 100 );
+                new PickImage().CaptureImage(ImageActivity.this, file, "img", 100 );
             }
         });
 
@@ -50,20 +50,20 @@ public class ImageActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode==100){
             if (resultCode==-1){
-                Uri uri = UriData.getOutputMediaImageUri(this, file, "img");
+                Uri uri = new UriData().getOutputMediaImageUri(this, file, "img");
                 //untuk mendapatkan bitmap bisa menggunakan decode stream
-                Bitmap bitmap = PickImage.decodeStreamReturnBitmap(this, uri);
+                Bitmap bitmap = new PickImage().decodeStreamReturnBitmap(this, uri);
                 //atau decode file yang di definisikan dulu urinya
-                Bitmap bitmap1 = PickImage.decodeFileReturnBitmap(this, uri);
+                Bitmap bitmap1 = new PickImage().decodeFileReturnBitmap(this, uri);
                 //get byte array
-                byte[] save = PickImage.getByteImageToSave(this, uri);
-                ToastCustom.showToastDefault(this, "data yang tersimpan : " + save);
-                PickImage.previewCapturedImage(imageView1, bitmap1, 100, 100);
+                byte[] save = new PickImage().getByteImageToSave(this, uri);
+                new ToastCustom().showToastDefault(this, "data yang tersimpan : " + save);
+                new PickImage().previewCapturedImage(imageView1, bitmap1, 100, 100);
             }
         }else if (requestCode==600){
             if (resultCode==-1){
                 //untuk uri yang di belakangnya ada cons itu tandanya dia sudah ada mana filenya tinggal masukkin path foldernya aja
-                Uri uri = UriData.getOutputMediaImageUriCons(this, file);
+                Uri uri = new UriData().getOutputMediaImageUriCons(this, file);
                 //ini kalau ingin cropnya di atur sendiri panjang dan lebarnya
                PickImageCustom.performCropCustom(uri, this, 800 );
                //ini kalau ingin di buat dp jadi panjang dan lebarnya sama (persegi)
@@ -84,7 +84,7 @@ public class ImageActivity extends AppCompatActivity {
 
                 Uri uri = data.getData();
                 if (uri != null){
-                    thePic = PickImage.decodeStreamReturnBitmap(this, uri);
+                    thePic = new PickImage().decodeStreamReturnBitmap(this, uri);
                 }
                 //key "data" setting defaultnya
                 if  (extras != null){
@@ -93,7 +93,7 @@ public class ImageActivity extends AppCompatActivity {
                         thePic = tempBitm;
                     }
                 }
-                PickImage.previewCapturedImage(imageView2, thePic, 150, 150);
+                new PickImage().previewCapturedImage(imageView2, thePic, 150, 150);
             }
         }
     }
@@ -101,6 +101,6 @@ public class ImageActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        IntentCustom.intentBackToFront(this);
+        new IntentCustom().intentBackToFront(this);
     }
 }

@@ -21,12 +21,12 @@ import java.util.List;
 
 public class SpinnerCustom {
 
-    public static void selectedItemByText(Context context, Spinner spinner, List<String> listData, String str) {
+    public void selectedItemByText(Context context, Spinner spinner, List<String> listData, String str) {
         int position = new MySpinnerAdapter((context), R.layout.custom_spinner, listData).getPosition(str);
         spinner.setSelection(position);
     }
 
-    public static void setAdapterSpinner(Spinner spinner, Context context, int textViewResourceId, List<String> objects){
+    public void setAdapterSpinner(Spinner spinner, Context context, int textViewResourceId, List<String> objects){
         spinner.setAdapter(new SpinnerCustom.MySpinnerAdapter(context, textViewResourceId, objects));
     }
     public static class MySpinnerAdapter extends ArrayAdapter<String> {

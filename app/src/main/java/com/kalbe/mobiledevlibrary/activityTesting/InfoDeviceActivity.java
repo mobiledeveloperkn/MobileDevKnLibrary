@@ -58,6 +58,6 @@ public class InfoDeviceActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
-        IntentCustom.intentBackToFront(this);
+        new IntentCustom().intentBackToFront(this);
     }
 }

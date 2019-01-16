@@ -35,7 +35,7 @@ public class FileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //take filenya dulu
                 String[] mimetypes = {"application/pdf"};
-                PickFile.intentPickFile(FileActivity.this, 510, mimetypes);
+                new PickFile().intentPickFile(FileActivity.this, 510, mimetypes);
             }
         });
 
@@ -44,7 +44,7 @@ public class FileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //ini untuk pick file biasa aja
                 String[] mimetypes = {"application/pdf" , "application/msword" , "application/vnd.ms-excel"};
-                PickFile.intentPickFile(FileActivity.this, 310, mimetypes);
+                new PickFile().intentPickFile(FileActivity.this, 310, mimetypes);
 
             }
         });
@@ -54,7 +54,7 @@ public class FileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //ini untuk pick file biasa aja
                 String[] mimetypes = {"application/pdf" , "application/msword" , "application/vnd.ms-excel"};
-                PickFile.intentPickFile(FileActivity.this, 410, mimetypes);
+                new PickFile().intentPickFile(FileActivity.this, 410, mimetypes);
             }
         });
 
@@ -65,24 +65,24 @@ public class FileActivity extends AppCompatActivity {
         if (requestCode==310){
             if (resultCode==-1){
                 //intent untuk view pdf menggunakan pdf viewer
-                String fileName = PickFile.getFileName(this, data.getData());
+                String fileName = new PickFile().getFileName(this, data.getData());
                 final String fileExtension = fileName.substring(fileName.lastIndexOf("."));
 
                     if (fileExtension.contains(".pdf")){
-                        IntentCustom.intentPDViewer(FileActivity.this, data.getData(), false);
+                        new IntentCustom().intentPDViewer(FileActivity.this, data.getData(), false);
                     } else if (fileExtension.contains(".doc")){
-                        IntentCustom.intentActionView(this, data.getData(), TypeDataIntent.DOC, true);
+                        new IntentCustom().intentActionView(this, data.getData(), TypeDataIntent.DOC, true);
                     } else if (fileExtension.contains(".xls")){
-                        IntentCustom.intentActionView(this, data.getData(), TypeDataIntent.EXCEL, true);
+                        new IntentCustom().intentActionView(this, data.getData(), TypeDataIntent.EXCEL, true);
                     }
             }
         } else if (requestCode==410){
             if (resultCode==-1){
                 try {
                     //get byte array
-                    byte[] save = PickFile.getByteArrayFileToSave(data.getData(), this);
+                    byte[] save = new PickFile().getByteArrayFileToSave(data.getData(), this);
 //                    ToastCustom.showToasty(this, "data yang tersimpan : " + save, 1);
-                    String fileName = PickFile.getFileName(this, data.getData());
+                    String fileName = new PickFile().getFileName(this, data.getData());
                     final String fileExtension = fileName.substring(fileName.lastIndexOf("."));
                     String file = Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "data" + File.separator + "com.mobiledevknlibs" + File.separator + "user_data" + File.separator + "tes" + File.separator ;
                     //decode file buat create temp file
@@ -94,8 +94,8 @@ public class FileActivity extends AppCompatActivity {
 
                     //atau pakek ini
 
-                    PickFile.decodeByteArraytoTempFile(save, file, fileExtension);
-                    ToastCustom.showToasty(this, "succes create temp file", 1);
+                    new PickFile().decodeByteArraytoTempFile(save, file, fileExtension);
+                    new ToastCustom().showToasty(this, "succes create temp file", 1);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -103,13 +103,13 @@ public class FileActivity extends AppCompatActivity {
         }else if (requestCode==510){
             if (resultCode==-1){
                 //get nama filenya dulu
-                String fileName = PickFile.getFileName(this, data.getData());
+                String fileName = new PickFile().getFileName(this, data.getData());
                 //trus definisikan path destinasinya
                 String file = Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "data" + File.separator + "com.mobiledevknlibs" + File.separator + "user_data" + File.separator + "tes" + File.separator + fileName ;
                 //convert ke dalam bentuk uri
-                Uri uri = UriData.getOutputMediaUrifromFile(this, new File(file));
-                PickFile.moveFileToSpecificUri(this, data, uri);
-                ToastCustom.showToasty(this, "Move up successfully, look at your destination file", 1);
+                Uri uri = new UriData().getOutputMediaUrifromFile(this, new File(file));
+                new PickFile().moveFileToSpecificUri(this, data, uri);
+                new ToastCustom().showToasty(this, "Move up successfully, look at your destination file", 1);
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

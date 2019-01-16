@@ -70,7 +70,7 @@ public class TesFragment extends Fragment {
         String tes3 = "Rp. 25000";
         String[] datas = {tes, tes2, tes3};
         data.add(datas);
-        Table.setTableLayout(context, tlb, colTextHeader, data);
+        new Table().setTableLayout(context, tlb, colTextHeader, data);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setView(promptView);
         alertDialogBuilder

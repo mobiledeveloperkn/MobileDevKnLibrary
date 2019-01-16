@@ -22,7 +22,7 @@ public class IntentCustom {
     * ini untuk intent dari fragment ke fragment dengan passing data ke activity terlebih dahulu
     * dengan param @value berupa nama fragment yang akan di tuju
     */
-    public static void intentViewFragment(Context context, Class<?> cls, String keyPutExtra, String value) {
+    public void intentViewFragment(Context context, Class<?> cls, String keyPutExtra, String value) {
         Intent myIntent = new Intent(context, cls);
         myIntent.putExtra(keyPutExtra, value);
         Activity activity = (Activity) context;
@@ -37,7 +37,7 @@ public class IntentCustom {
     * param @value ini di isi null jika param @keyPutExtra di isi null
     * sebaliknya jika @keyPutExtra tidak null mana bisa di isi dengan array string dengan length berapapun
     */
-    public static void intentToActivity(Context context, Class<?> cls, String keyPutExtra, String[] value) {
+    public void intentToActivity(Context context, Class<?> cls, String keyPutExtra, String[] value) {
         Intent myIntent = new Intent(context, cls);
         myIntent.putExtra(keyPutExtra, value);
         Activity activity = (Activity) context;
@@ -52,7 +52,7 @@ public class IntentCustom {
     * param @uri di isi dengan path file pdf yang ingin di lihat
     * param @swipeHorizontal akan menampilkan scroll horizontal jika di isi true dan scroll vertical jika false
     */
-    public static void intentPDViewer(Context context, Uri uri, Boolean swipeHorizontal) {
+    public void intentPDViewer(Context context, Uri uri, Boolean swipeHorizontal) {
         boolean result = PermissionChecker.Utility.checkPermission(context);
         if (result) {
             Intent intent = new Intent(context, PDFViewer.class);
@@ -69,7 +69,7 @@ public class IntentCustom {
     * param @typeData nya bisa di get dengan memanggil class TypeDataIntent
     * param @backToFront nya itu in case user ingin ke activity awal jika aplikasi pihak ketiga tidak tersedia
     * */
-    public static void intentActionView(Context context, Uri uri, String typeData, Boolean backToFront) {
+    public void intentActionView(Context context, Uri uri, String typeData, Boolean backToFront) {
         boolean result = PermissionChecker.Utility.checkPermission(context);
         if (result) {
             try {
@@ -84,15 +84,15 @@ public class IntentCustom {
                 context.startActivity(intent);
             } catch (ActivityNotFoundException e) {
                 if (backToFront) {
-                    IntentCustom.intentBackToFront(context);
+                    new IntentCustom().intentBackToFront(context);
                 }
-                ToastCustom.showToasty(context, "You haven't app for open this file", 3);
+                new ToastCustom().showToasty(context, "You haven't app for open this file", 3);
             }
         }
     }
 
     //ini intent untuk balik ke activty parentnya, satu tingkat di atasnya
-    public static void intentBackToFront(Context context) {
+    public void intentBackToFront(Context context) {
         Intent parentIntent = NavUtils.getParentActivityIntent((Activity) context);
         parentIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         context.startActivity(parentIntent);

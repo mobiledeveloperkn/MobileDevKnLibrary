@@ -16,14 +16,14 @@ import android.support.v4.content.ContextCompat;
  */
 
 public class PermissionChecker extends Activity {
-    final private static int REQUEST_CODE_ASK_PERMISSIONS = 123;
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    public static void getpermissionSPGAll(final Activity activity){
+    public void getpermissionSPGAll(final Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setMessage("You need to allow access. . .");
         builder.setCancelable(false);
@@ -66,7 +66,7 @@ public class PermissionChecker extends Activity {
         AlertDialog alert = builder.create();
         alert.show();
     }
-    public static void getPermission(Activity activity, int permissionId){
+    public void getPermission(Activity activity, int permissionId){
         if(enumPermissionChecker.CAMERA.getIdPermision() == permissionId){
             ActivityCompat.requestPermissions(activity,
                     new String[] { Manifest.permission.CAMERA},

@@ -47,7 +47,7 @@ public class TableActivity extends AppCompatActivity {
         String[] datas = {tes, tes2, tes3};
         data.add(datas);
         //cara menggunakan table library ini dengan memasukkan parameter context, nama tableLayoutnya, string array nama headernya, list string array datanya
-        Table.setTableLayout(context, tlb, colTextHeader, data);
+        new Table().setTableLayout(context, tlb, colTextHeader, data);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setView(promptView);
         alertDialogBuilder
@@ -64,6 +64,6 @@ public class TableActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        IntentCustom.intentBackToFront(this);
+        new IntentCustom().intentBackToFront(this);
     }
 }

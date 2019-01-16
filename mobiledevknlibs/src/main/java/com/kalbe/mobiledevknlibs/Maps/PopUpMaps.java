@@ -62,7 +62,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
         } catch (Exception ex) {
             valid = false;
 //            new clsMainActivity().showCustomToast(getContext(), "Your location not found", false);
-            ToastCustom.showToasty(context.getApplicationContext(),"Your location is not detected",4);
+            new ToastCustom().showToasty(context.getApplicationContext(),"Your location is not detected",4);
         }
 
                 /*if (valid) {
@@ -148,15 +148,76 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
 
             locationA.setLatitude(latitude);
             locationA.setLongitude(longitude);
+            alertD.setTitle("Your Position");
+            alertD.show();
+        }
+    }
 
-            Location locationB = new Location("point B");
+    public void popUpMapsCustom(final Context context, int resViewLayout, String lblLat, String lblLong) {
+        Boolean valid = true;
+        getLocation(context);
+        double latitude = 0;
+        double longitude = 0;
 
-//                    locationB.setLatitude(latitudeOutlet);
-//                    locationB.setLongitude(longitudeOutlet);
+        try {
+            latitude = Double.parseDouble(lblLat);
+            longitude = Double.parseDouble(lblLong);
+        } catch (Exception ex) {
+            valid = false;
+            new ToastCustom().showToasty(context.getApplicationContext(),"Your location is not detected",4);
+        }
 
-//                    float distance = locationA.distanceTo(locationB);
-//
-//                    alertD.setTitle("Distance : "+String.valueOf((int) Math.ceil(distance)) + " meters");
+        if (valid) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+            View promptView = inflater.inflate(resViewLayout, null);
+
+            final Activity activity = (Activity) context;
+
+            mMap = ((MapFragment) (activity).getFragmentManager().findFragmentById(R.id.map)).getMap();
+
+            if (mMap == null) {
+                mMap = ((MapFragment) (activity).getFragmentManager().findFragmentById(R.id.map)).getMap();
+            }
+            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Your Location");
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+            final LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            builder.include(marker.getPosition());
+            mMap.clear();
+            mMap.addMarker(marker);
+            final GoogleMap finalMMap = mMap;
+            mMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+
+                @Override
+                public void onCameraChange(CameraPosition arg0) {
+                    // Move camera.
+                    finalMMap.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 60));
+                    // Remove listener to prevent position reset on camera move.
+                    finalMMap.setOnCameraChangeListener(null);
+                }
+            });
+
+            android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(context);
+            alertDialogBuilder.setView(promptView);
+            alertDialogBuilder
+                    .setCancelable(false)
+                    .setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    MapFragment f = (MapFragment) (activity).getFragmentManager().findFragmentById(R.id.map);
+                                    if (f != null) {
+                                        (activity).getFragmentManager().beginTransaction().remove(f).commit();
+                                    }
+
+                                    dialog.dismiss();
+                                }
+                            });
+            final android.support.v7.app.AlertDialog alertD = alertDialogBuilder.create();
+
+            Location locationA = new Location("point A");
+
+            locationA.setLatitude(latitude);
+            locationA.setLongitude(longitude);
             alertD.setTitle("Your Position");
             alertD.show();
         }
@@ -177,7 +238,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
             longitude = getLocation(context).getLongitude();
         } catch (Exception ex) {
             valid = false;
-            ToastCustom.showToastSPGMobile(context, "Your location not found", false);
+            new ToastCustom().showToastSPGMobile(context, "Your location not found", false);
         }
 
         //Check longlat outlet location
@@ -187,7 +248,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
                 longitudeOutlet = Double.parseDouble(String.valueOf(paramLongitude));
             } catch (Exception ex) {
                 valid = false;
-                ToastCustom.showToastSPGMobile(context, "Outlet location not found", false);
+                new ToastCustom().showToastSPGMobile(context, "Outlet location not found", false);
             }
         }
 
@@ -282,7 +343,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
             if (!isGPSEnabled && !isNetworkEnabled) {
                 // no network provider is enabled
 //                new clsMainActivity().showCustomToast(getContext(), "no network provider is enabled", false);
-                ToastCustom.showToasty(activity.getApplicationContext(),"no network provider is enabled",4);
+                new ToastCustom().showToasty(activity.getApplicationContext(),"no network provider is enabled",4);
             } else {
                 canGetLocation = true;
                 Location location = null;
@@ -324,7 +385,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
                                 double longitude = location.getLongitude();
                             }else{
 //                                new clsMainActivity().showCustomToast(context,"Your GPS off", false);
-                                ToastCustom.showToasty(activity.getApplicationContext(),"Your GPS off",4);
+                                new ToastCustom().showToasty(activity.getApplicationContext(),"Your GPS off",4);
                             }
                         }
                     }
@@ -343,7 +404,7 @@ public class PopUpMaps extends Activity implements LocationListener, OnMapReadyC
         }
         if (mockStatus){
 //            new clsMainActivity().showCustomToast(getActivity().getApplicationContext(), "Fake GPS detected, !", false);
-            ToastCustom.showToasty(activity.getApplicationContext(),"Fake GPS detected !",4);
+            new ToastCustom().showToasty(activity.getApplicationContext(),"Fake GPS detected !",4);
             Toast.makeText(activity.getApplicationContext(),"Please Turn Off Fake Location, And Restart Your Phone",Toast.LENGTH_LONG);
             Vibrator v = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 500 milliseconds

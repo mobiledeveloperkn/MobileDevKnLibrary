@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 
 public class Table {
-    public static void setTableLayout(Context context, TableLayout tableLayout, String[] colTextHeader, ArrayList<String[]> colData) {
+    public void setTableLayout(Context context, TableLayout tableLayout, String[] colTextHeader, ArrayList<String[]> colData) {
         tableLayout.removeAllViews();
 
         TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
@@ -59,8 +59,9 @@ public class Table {
             tr.setLayoutParams(tableRowParams);
             for (String dt : data){
                 TextView tv = new TextView(context);
+                tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 3));
                 tv.setTextSize(12);
-                tv.setWidth(400);
+                tv.setWidth(100);
                 tv.setPadding(10, 10, 10, 10);
                 tv.setBackgroundColor(Color.parseColor("#f0f0f0"));
                 tv.setTextColor(Color.BLACK);
